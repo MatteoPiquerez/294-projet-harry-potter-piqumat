@@ -119,27 +119,30 @@ The extensive README.md contains a 25-step tutorial. Current implementation is a
 3. Auto-routing will create `/favoris` route automatically
 
 ### Working with Pokémon Data
+
 ```vue
+
 <script setup>
-import { usePokemonStore } from '@/stores/pokemonStore'
+  import {usePokemonStore} from '@/stores/pokemonStore'
 
-const pokemonStore = usePokemonStore()
+  const pokemonStore = usePokemonStore()
 
-// Access data
-const allPokemon = pokemonStore.pokemons // Array of 10 Pokémon
-const totalCount = pokemonStore.totalPokemons // Number: 10
-const favorites = pokemonStore.getFavorites() // Array of favorite Pokémon
+  // Access data
+  const allPokemon = pokemonStore.pokemons // Array of 10 Pokémon
+  const totalCount = pokemonStore.totalPokemons // Number: 10
+  const favorites = pokemonStore.getFavorites() // Array of favorite Pokémon
 
-// Modify data
-pokemonStore.toggleFavorite(pokemon) // Add/remove favorite
-pokemonStore.addPokemon(newPokemon) // Add new Pokémon
+  // Modify data
+  pokemonStore.toggleFavorite(character) // Add/remove favorite
+  pokemonStore.addPokemon(newPokemon) // Add new Pokémon
 </script>
 ```
 
 ### Working with Types
 Each Pokémon has `types` array with type IDs. Get type info:
+
 ```js
-const type = pokemonStore.getTypeById(1) // Returns { id: 1, name: 'Électrique', color: '#FFD700' }
+const type = characterStore.getTypeById(1) // Returns { id: 1, name: 'Électrique', color: '#FFD700' }
 ```
 
 ### Adding Navigation Menu Items
