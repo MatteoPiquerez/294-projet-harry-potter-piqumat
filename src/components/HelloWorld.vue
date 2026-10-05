@@ -12,6 +12,7 @@
         <h1 class="text-h2 font-weight-bold">Vuetify</h1>
       </div>
 
+
       <v-row>
         <v-col cols="12">
           <v-card

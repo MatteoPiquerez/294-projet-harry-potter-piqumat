@@ -24,7 +24,7 @@ export const useCharacterStore = defineStore('character', {
      * @param {Object} state - Le state du store
      * @returns {function(string): Object|undefined}
      */
-    getPokemonById: (state) => {
+    getCharacterById: (state) => {
       return (characterId) => {
         return state.characters.find(character => character.id === characterId)
       }
