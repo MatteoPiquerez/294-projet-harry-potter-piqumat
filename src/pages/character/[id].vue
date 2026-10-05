@@ -23,23 +23,23 @@
       class="mx-auto"
     >
       <v-img
-        :src="getImageUrl(pokemon.img)"
-        :alt="pokemon.name"
+        :src="getImageUrl(character.img)"
+        :alt="character.name"
         height="300"
         cover
       />
 
       <v-card-title class="text-h4">
-        {{ pokemon.name }}
+        {{ character.name }}
       </v-card-title>
 
       <v-card-subtitle>
-        Niveau {{ pokemon.level }}
+        Maison {{ character.house }}
       </v-card-subtitle>
 
       <v-card-text>
-        <p v-if="pokemon.description" class="text-body-1 mb-4">
-          {{ pokemon.description }}
+        <p v-if="character.description" class="text-body-1 mb-4">
+          {{ character.description }}
         </p>
       </v-card-text>
     </v-card>
@@ -49,17 +49,17 @@
 <script setup>
 import { getImageUrl } from '@/utils/imageUrl'
 // Import du store Pokémon
-import { usePokemonStore } from '@/stores/pokemonStore'
+import { useCharacterStore } from '@/stores/characterStore'
 
 // Récupérer l'ID depuis les paramètres de la route
 const route = useRoute()
 
 // Instancier le store
-const pokemonStore = usePokemonStore()
+const characterStore = useCharacterStore()
 
-// Utiliser le getter du store pour trouver le Pokémon
+// Utiliser le getter du store pour trouver le Personnage
 // computed se met à jour automatiquement si l'ID change
-const pokemon = computed(() => {
-  return pokemonStore.getPokemonById(route.params.id)
+const character = computed(() => {
+  return characterStore.getCharacterById(route.params.id)
 })
 </script>
