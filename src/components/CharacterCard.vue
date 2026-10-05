@@ -1,4 +1,5 @@
 <template>
+  bonjour depuis CharacterCard.vue
   <v-card :to="`/character/${character.id}`" hover>
     <v-img
       :src="getImageUrl(character.img)"

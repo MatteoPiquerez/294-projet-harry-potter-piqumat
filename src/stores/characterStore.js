@@ -38,8 +38,8 @@ export const useCharacterStore = defineStore('character', {
 
       try {
         await Promise.all([
-          this.fetchSpells({ withLoader: false }),
           this.fetchCharacters({ withLoader: false }),
+          this.fetchSpells({ withLoader: false }),
         ])
         console.log('Store Personnage initialisé')
       } catch (error) {
@@ -53,7 +53,7 @@ export const useCharacterStore = defineStore('character', {
       if (withLoader) this.isLoading = true
 
       try {
-        const response = await api.get('/types')
+        const response = await api.get('/spells')
 
         this.spells = response.data
       } catch (error) {
@@ -66,9 +66,8 @@ export const useCharacterStore = defineStore('character', {
 
     async fetchCharacters ({ withLoader = true } = {}) {
       if (withLoader) this.isLoading = true
-
       try {
-        const response = await api.get('/pokemons')
+        const response = await api.get('/characters')
 
         this.characters = response.data
       } catch (error) {

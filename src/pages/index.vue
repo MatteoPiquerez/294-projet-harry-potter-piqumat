@@ -26,15 +26,12 @@
       variant="tonal"
       class="mb-6"
     >
-      Impossible de charger les Pokémon. Vérifiez que l'API tourne sur
+      Impossible de charger les Personnage. Vérifiez que l'API tourne sur
       {{ apiUrl }}.
     </v-alert>
 
     <!-- Grille de cartes (cas normal) -->
     <v-row v-else>
-      <!-- ... vos v-col + CharacterCard ... -->
-    </v-row>
-    <v-row>
       <v-col
         v-for="character in characters"
         :key="character.id"
@@ -43,6 +40,8 @@
         md="4"
         lg="3"
       >
+        bonjour depuis index.vue
+         {{ character.name }}
         <character-card :character="character" />
       </v-col>
     </v-row>
@@ -64,4 +63,5 @@ const characterStore = useCharacterStore()
 // Destructurer le state en gardant la réactivité
 // storeToRefs convertit chaque propriété du state en ref
 const { characters } = storeToRefs(characterStore)
+console.log(characters[1])
 </script>
