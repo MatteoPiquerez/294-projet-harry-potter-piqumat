@@ -33,15 +33,13 @@
     <!-- Grille de cartes (cas normal) -->
     <v-row v-else>
       <v-col
-        v-for="character in characters"
+        v-for="character in characters.data"
         :key="character.id"
         cols="12"
         lg="3"
         md="4"
         sm="6"
       >
-        bonjour depuis index.vue
-        {{ character.name }}
         <character-card :character="character" />
       </v-col>
     </v-row>
