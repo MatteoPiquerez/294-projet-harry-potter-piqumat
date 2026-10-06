@@ -62,4 +62,5 @@
   const character = computed(() => {
     return characterStore.getCharacterById(route.params.id)
   })
+  console.log(character)
 </script>

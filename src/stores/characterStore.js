@@ -56,8 +56,7 @@ export const useCharacterStore = defineStore('character', {
 
       try {
         const response = await api.get('/spells')
-
-        this.spells = response.data
+        this.spells = response.data.data
       } catch (error) {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
         this.spells = []
@@ -74,8 +73,9 @@ export const useCharacterStore = defineStore('character', {
       }
       try {
         const response = await api.get('/characters')
-
-        this.characters = response.data
+        this.characters = response.data.data
+        console.log(this.characters[1])  // retourne un proxy qqch -> fonctionne pas
+        console.log(response.data.data[2].name) // retourne l'objet -> fonctionne
       } catch (error) {
         console.error('Erreur lors du chargement des Personnages :', error.message)
         this.characters = []

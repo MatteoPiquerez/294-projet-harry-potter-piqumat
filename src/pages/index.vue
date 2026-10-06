@@ -33,7 +33,7 @@
     <!-- Grille de cartes (cas normal) -->
     <v-row v-else>
       <v-col
-        v-for="character in characters.data"
+        v-for="character in characters"
         :key="character.id"
         cols="12"
         lg="3"
@@ -61,5 +61,4 @@
   // Destructurer le state en gardant la réactivité
   // storeToRefs convertit chaque propriété du state en ref
   const { characters } = storeToRefs(characterStore)
-  console.log(characters[1])
 </script>
