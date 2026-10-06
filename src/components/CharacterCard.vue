@@ -1,11 +1,11 @@
 <template>
   bonjour depuis CharacterCard.vue
-  <v-card :to="`/character/${character.id}`" hover>
+  <v-card hover :to="`/character/${character.id}`">
     <v-img
-      :src="getImageUrl(character.img)"
       :alt="character.name"
-      height="200"
       cover
+      height="200"
+      :src="getImageUrl(character.img)"
     />
     <v-card-title>{{ character.name }}</v-card-title>
     <v-card-subtitle>Maison {{ character.house }}</v-card-subtitle>
@@ -13,12 +13,12 @@
 </template>
 
 <script setup>
-import { getImageUrl } from '@/utils/imageUrl'
+  import { getImageUrl } from '@/utils/imageUrl'
 
-defineProps({
-  character: {
-    type: Object,
-    required: true,
-  },
-})
+  defineProps({
+    character: {
+      type: Object,
+      required: true,
+    },
+  })
 </script>

@@ -1,9 +1,9 @@
 <template>
   <v-container>
     <v-btn
-      variant="text"
-      prepend-icon="mdi-arrow-left"
       class="mb-4"
+      prepend-icon="mdi-arrow-left"
+      variant="text"
       @click="$router.back()"
     >
       Retour
@@ -19,14 +19,14 @@
 
     <v-card
       v-else
-      max-width="800"
       class="mx-auto"
+      max-width="800"
     >
       <v-img
-        :src="getImageUrl(character.img)"
         :alt="character.name"
-        height="300"
         cover
+        height="300"
+        :src="getImageUrl(character.img)"
       />
 
       <v-card-title class="text-h4">
@@ -47,19 +47,19 @@
 </template>
 
 <script setup>
-import { getImageUrl } from '@/utils/imageUrl'
-// Import du store Pokémon
-import { useCharacterStore } from '@/stores/characterStore'
+  // Import du store Pokémon
+  import { useCharacterStore } from '@/stores/characterStore'
+  import { getImageUrl } from '@/utils/imageUrl'
 
-// Récupérer l'ID depuis les paramètres de la route
-const route = useRoute()
+  // Récupérer l'ID depuis les paramètres de la route
+  const route = useRoute()
 
-// Instancier le store
-const characterStore = useCharacterStore()
+  // Instancier le store
+  const characterStore = useCharacterStore()
 
-// Utiliser le getter du store pour trouver le Personnage
-// computed se met à jour automatiquement si l'ID change
-const character = computed(() => {
-  return characterStore.getCharacterById(route.params.id)
-})
+  // Utiliser le getter du store pour trouver le Personnage
+  // computed se met à jour automatiquement si l'ID change
+  const character = computed(() => {
+    return characterStore.getCharacterById(route.params.id)
+  })
 </script>

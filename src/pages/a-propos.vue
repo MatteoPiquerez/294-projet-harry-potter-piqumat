@@ -6,7 +6,7 @@
   <v-container>
     <h1 class="text-h3 text-center my-6">À propos</h1>
 
-    <v-card max-width="800" class="mx-auto">
+    <v-card class="mx-auto" max-width="800">
       <v-card-text>
         <p class="text-body-1 mb-4">
           Le <strong>Harry Potter Dex</strong> est une encyclopédie électronique portable conçue pour

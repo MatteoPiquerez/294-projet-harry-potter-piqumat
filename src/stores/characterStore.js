@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import api from "@/plugins/axios";
+import api from '@/plugins/axios.js'
 
 export const useCharacterStore = defineStore('character', {
   state: () => ({
@@ -10,11 +10,11 @@ export const useCharacterStore = defineStore('character', {
 
   getters: {
     /**
-     * Nombre total de personnage dans le store.
+     * Nombre total de personnages dans le store.
      * @param {Object} state - Le state du store
      * @returns {number}
      */
-    totalCharacters: (state) => {
+    totalCharacters: state => {
       return state.characters.length
     },
 
@@ -24,8 +24,8 @@ export const useCharacterStore = defineStore('character', {
      * @param {Object} state - Le state du store
      * @returns {function(string): Object|undefined}
      */
-    getCharacterById: (state) => {
-      return (characterId) => {
+    getCharacterById: state => {
+      return characterId => {
         return state.characters.find(character => character.id === characterId)
       }
     },
@@ -50,7 +50,9 @@ export const useCharacterStore = defineStore('character', {
     },
 
     async fetchSpells ({ withLoader = true } = {}) {
-      if (withLoader) this.isLoading = true
+      if (withLoader) {
+        this.isLoading = true
+      }
 
       try {
         const response = await api.get('/spells')
@@ -60,12 +62,16 @@ export const useCharacterStore = defineStore('character', {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
         this.spells = []
       } finally {
-        if (withLoader) this.isLoading = false
+        if (withLoader) {
+          this.isLoading = false
+        }
       }
     },
 
     async fetchCharacters ({ withLoader = true } = {}) {
-      if (withLoader) this.isLoading = true
+      if (withLoader) {
+        this.isLoading = true
+      }
       try {
         const response = await api.get('/characters')
 
@@ -74,7 +80,9 @@ export const useCharacterStore = defineStore('character', {
         console.error('Erreur lors du chargement des Personnages :', error.message)
         this.characters = []
       } finally {
-        if (withLoader) this.isLoading = false
+        if (withLoader) {
+          this.isLoading = false
+        }
       }
     },
   },
