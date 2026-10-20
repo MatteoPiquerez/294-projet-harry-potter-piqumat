@@ -40,7 +40,6 @@
         md="4"
         lg="3"
       >
-        bonjour depuis index.vue
          {{ character.name }}
         <character-card :character="character" />
       </v-col>
@@ -64,4 +63,5 @@ const characterStore = useCharacterStore()
 // storeToRefs convertit chaque propriété du state en ref
 const { characters } = storeToRefs(characterStore)
 console.log(characters[1])
+console.log(characters)
 </script>

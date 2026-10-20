@@ -60,6 +60,7 @@ const characterStore = useCharacterStore()
 // Utiliser le getter du store pour trouver le Personnage
 // computed se met à jour automatiquement si l'ID change
 const character = computed(() => {
+  console.log(characterStore.getCharacterById(route.params.id))
   return characterStore.getCharacterById(route.params.id)
 })
 </script>

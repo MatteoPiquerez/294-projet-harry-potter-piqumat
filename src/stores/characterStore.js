@@ -41,6 +41,7 @@ export const useCharacterStore = defineStore('character', {
           this.fetchCharacters({ withLoader: false }),
           this.fetchSpells({ withLoader: false }),
         ])
+        console.log(this.characters.value)
         console.log('Store Personnage initialisé')
       } catch (error) {
         console.error('Erreur lors de l\'initialisation:', error)
@@ -55,7 +56,7 @@ export const useCharacterStore = defineStore('character', {
       try {
         const response = await api.get('/spells')
 
-        this.spells = response.data
+        this.spells = response.data.data
       } catch (error) {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
         this.spells = []
@@ -69,7 +70,9 @@ export const useCharacterStore = defineStore('character', {
       try {
         const response = await api.get('/characters')
 
-        this.characters = response.data
+        this.characters = response.data.data
+        console.log('Store Characters du characters:', response.data.data)
+
       } catch (error) {
         console.error('Erreur lors du chargement des Personnages :', error.message)
         this.characters = []

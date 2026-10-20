@@ -13,12 +13,12 @@
 </template>
 
 <script setup>
-import { getImageUrl } from '@/utils/imageUrl'
+  import { getImageUrl } from '@/utils/imageUrl'
 
-defineProps({
-  character: {
-    type: Object,
-    required: true,
-  },
-})
+  defineProps({
+    character: {
+      type: Object,
+      required: true,
+    },
+  })
 </script>

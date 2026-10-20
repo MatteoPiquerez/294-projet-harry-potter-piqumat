@@ -18,10 +18,11 @@
       -->
       <v-avatar
         class="mr-4 pa-0 cursor-pointer"
-        image="@/assets/harry-potter-logo.png"
+
         size="64"
         @click="$router.push('/')"
       />
+      <!--        image="@/assets/harry-potter-logo.png"-->
 
       <!-- Titre de l'application affiché dans la barre -->
       <v-toolbar-title>HarryPotterDex</v-toolbar-title>
