@@ -22,11 +22,11 @@ export const useCharacterStore = defineStore('character', {
      * Trouve un Personnage par son identifiant.
      * Retourne une fonction (getter avec paramètre).
      * @param {Object} state - Le state du store
-     * @returns {function(string): Object|undefined}
+     * @returns {function(number): Object|undefined}
      */
     getCharacterById: state => {
       return characterId => {
-        return state.characters.find(character => character.id === characterId)
+        return state.characters.find(character => character.id == characterId)
       }
     },
   },
