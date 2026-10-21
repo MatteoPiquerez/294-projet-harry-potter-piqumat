@@ -41,6 +41,7 @@ export const useCharacterStore = defineStore('character', {
           this.fetchCharacters({ withLoader: false }),
           this.fetchSpells({ withLoader: false }),
         ])
+        console.log(this.characters.value)
         console.log('Store Personnage initialisé')
       } catch (error) {
         console.error('Erreur lors de l\'initialisation:', error)
@@ -50,9 +51,7 @@ export const useCharacterStore = defineStore('character', {
     },
 
     async fetchSpells ({ withLoader = true } = {}) {
-      if (withLoader) {
-        this.isLoading = true
-      }
+      if (withLoader) this.isLoading = true
 
       try {
         const response = await api.get('/spells')
@@ -61,16 +60,12 @@ export const useCharacterStore = defineStore('character', {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
         this.spells = []
       } finally {
-        if (withLoader) {
-          this.isLoading = false
-        }
+        if (withLoader) this.isLoading = false
       }
     },
 
     async fetchCharacters ({ withLoader = true } = {}) {
-      if (withLoader) {
-        this.isLoading = true
-      }
+      if (withLoader) this.isLoading = true
       try {
         const response = await api.get('/characters')
         this.characters = response.data.data
@@ -80,9 +75,7 @@ export const useCharacterStore = defineStore('character', {
         console.error('Erreur lors du chargement des Personnages :', error.message)
         this.characters = []
       } finally {
-        if (withLoader) {
-          this.isLoading = false
-        }
+        if (withLoader) this.isLoading = false
       }
     },
   },

@@ -40,6 +40,7 @@
         md="4"
         sm="6"
       >
+         {{ character.name }}
         <character-card :character="character" />
       </v-col>
     </v-row>

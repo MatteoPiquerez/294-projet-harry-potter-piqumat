@@ -7,6 +7,7 @@
     <app-footer />
   </v-app>
 </template>
+
 <script setup>
 // Imports des composants de layout
   import AppFooter from '@/components/AppFooter.vue'
