@@ -6,6 +6,7 @@ export const useCharacterStore = defineStore('character', {
     isLoading: false,
     spells: [],
     characters: [],
+    species: ['human', 'ghost', 'poltergeist', 'owl', 'toad', 'goblin', 'dog', 'phoenix', 'cat', 'half-giant'],
   }),
 
   getters: {
@@ -67,7 +68,7 @@ export const useCharacterStore = defineStore('character', {
     async fetchCharacters ({ withLoader = true } = {}) {
       if (withLoader) this.isLoading = true
       try {
-        const response = await api.get('/api/harrypotter/characters')
+        const response = await api.get('/api/harrypotter/characters?limit=100')
         this.characters = response.data.data
         console.log(this.characters[1])  // retourne un proxy qqch -> fonctionne pas
         console.log(response.data.data[2].name) // retourne l'objet -> fonctionne
