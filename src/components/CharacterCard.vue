@@ -4,7 +4,7 @@
       :alt="character.name"
       cover
       height="200"
-      :src="getImageUrl(character.img)"
+      :src="getImageUrl(character.image)"
     />
     <v-card-title>{{ character.name }}</v-card-title>
     <v-card-subtitle>Maison {{ character.house }}</v-card-subtitle>

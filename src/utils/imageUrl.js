@@ -5,5 +5,5 @@
  */
 export function getImageUrl (filename, fallback = 'default.png') {
   if (!filename) filename = fallback
-  return `${import.meta.env.VITE_API_URL}images/${filename}`
+  return `${import.meta.env.VITE_API_URL}/${filename}`
 }

@@ -54,7 +54,7 @@ export const useCharacterStore = defineStore('character', {
       if (withLoader) this.isLoading = true
 
       try {
-        const response = await api.get('api/harrypotter/spells')
+        const response = await api.get('/api/harrypotter/spells')
         this.spells = response.data.data
       } catch (error) {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
@@ -67,7 +67,7 @@ export const useCharacterStore = defineStore('character', {
     async fetchCharacters ({ withLoader = true } = {}) {
       if (withLoader) this.isLoading = true
       try {
-        const response = await api.get('api/harrypotter/characters')
+        const response = await api.get('/api/harrypotter/characters')
         this.characters = response.data.data
         console.log(this.characters[1])  // retourne un proxy qqch -> fonctionne pas
         console.log(response.data.data[2].name) // retourne l'objet -> fonctionne
