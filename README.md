@@ -3,14 +3,18 @@
 ## 1. 🎨 Présentation du projet
 
 ### Concept
-- API choisie et pourquoi  
-- Public cible  
-- Objectifs de l’application  
+J'ai choisi une API Harry Potter car je suis un grand fan de cette saga. 
+Le public cible peut être soit des dévelopeur junior qui pourrait utiliser ce projet comme exemple, comme exercice 
+ou comme template pour d'autre projet.
+L'objectif de l'application est de faire un code propre pour que l'application puisse ensuite grandire et évoluer 
+facilement. Pour que des fonctionnalitées puissent être rajouté 
+
 
 ### Fonctionnalités principales
-- Affichage d’une liste d’éléments (via API)
-- Recherche / Tri / Filtres
-- Vue détail
+- Affichage d’une liste de plein de personnage de la saga Harry Potter (via API)
+- Recherche / Tri / Filtres : des fonctions de recherche sur les personnages et les sortilège sont disponible pour filtrer les recherches de manière pertinente
+- Vue détail : en cliquant sur un personnage cela ouvre une carte avec des informations détaillé sur le personnage. Les sortilèges n'ont pas de vue détaillé car il y a trop peu d'information à présenter 
+- 
 - Fonctionnalité interactive (favoris, watchlist, paramètres…)
 - Persistance locale (favoris ou préférences)
 
@@ -42,15 +46,15 @@ _(Capture d’écran de l’application)_
 ## 3. 🛠️ Outils et méthodologie
 
 ### Environnement de développement
-- **IDE** : VS Code / WebStorm / Autre
+- **IDE** : WebStorm 
 - **Versioning** : Git + GitHub
-- **Dépendances principales** : Vue 3, Vuetify 3, Pinia, Axios/Fetch
+- **Dépendances principales** : Vue 3, Vuetify 3, Pinia, Axios
 - **Gestion API Keys** : `.env` + `.env.example`
 
 ### Installation & Run
-- Cloner le repo :...
-- Installer :... 
-- Lancer :...
+- Cloner le repo : `git clone https://github.com/MatteoPiquerez/294-projet-harry-potter-piqumat.git`
+- Installer : `npm install`
+- Lancer : `npm run dev`
 - Variables d’environnement : copier `.env.example` → `.env` et compléter les clés nécessaires  
 
 ### Méthodologie
@@ -112,9 +116,9 @@ Outils utiles : Figma / Draw.io / ...
 **⚠️ TRANSPARENCE OBLIGATOIRE** : Si vous utilisez une IA, vous DEVEZ :
 
 ### IA utilisée
-- **Nom** : ChatGPT / Claude / GitHub Copilot / Autre  
-- **Version** : _(ex. GPT-4)_  
-- **Contexte** : Aide ponctuelle / Génération de code / Debugging  
+- **Nom** : Microsoft Copilot
+- **Version** : 2.20261020.70.0
+- **Contexte** : Aide ponctuelle pour intégrer les outils de debuging Vue JS 
 
 ### Utilisation détaillée
 **Domaines d'aide :**
