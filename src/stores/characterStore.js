@@ -157,9 +157,7 @@ export const useCharacterStore = defineStore('character', {
      * @param character Le personnage à changer.
      */
     toggleFavorite (character) {
-      const favoriteIndex = this.favorites.findIndex(
-        favoriteId => favoriteId === character.id,
-      )
+      const favoriteIndex = this.favorites.indexOf(character.id)
 
       if (favoriteIndex === -1) {
         // Pas encore favori → on l'ajoute
