@@ -28,7 +28,7 @@ export const useCharacterStore = defineStore('character', {
      */
     getCharacterById: state => {
       return characterId => {
-        return state.characters.find(character => character.id == characterId)
+        return state.characters.find(character => character.id === Number(characterId))
       }
     },
 
