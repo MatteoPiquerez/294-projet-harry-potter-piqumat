@@ -132,7 +132,7 @@
 }
 
 .list-item:hover {
-  background-color: darkgray;
+  background-color: midnightblue;
 }
 
 .valeur {

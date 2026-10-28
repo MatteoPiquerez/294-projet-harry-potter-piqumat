@@ -5,6 +5,7 @@ pour séparer les key de mes character (alternativeName par exemple ) : https://
 trouver les icons mdi : https://pictogrammers.com/library/mdi/
 tester si la valeur des clé des personnages sont des tableaux : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
+menu de navigation entre personnages et sortilège : https://vuetifyjs.com/en/components/tabs/#usage
 
 ia 
 Claude Code v2.1.246
