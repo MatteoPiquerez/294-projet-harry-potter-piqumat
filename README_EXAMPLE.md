@@ -1,3 +1,13 @@
+site visité 
+
+pour les polices : https://gwfh.mranftl.com/fonts
+pour séparer les key de mes character (alternativeName par exemple ) : https://stackoverflow.com/questions/7888238/javascript-split-string-on-uppercase-characters
+trouver les icons mdi : https://pictogrammers.com/library/mdi/
+tester si la valeur des clé des personnages sont des tableaux : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
+tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
+
+
+
 # 🌐 Mon Projet Vue.js & Vuetify
 
 ## 1. 🎨 Présentation du projet

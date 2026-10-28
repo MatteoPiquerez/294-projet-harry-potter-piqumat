@@ -52,7 +52,7 @@ Définition des éléments de menu pour la navigation
     * icon : l'icône du lien
 */
   const menuItems = [
-    { title: 'Accueil', path: '/', icon: 'mdi-pokeball' },
+    { title: 'Accueil', path: '/', icon: 'mdi-deathly-hallows' },
     { title: 'Favoris', path: '/favoris', icon: 'mdi-heart' },
     { title: 'À propos', path: '/a-propos', icon: 'mdi-information' },
     // Ajouter ici les autres liens du menu.
