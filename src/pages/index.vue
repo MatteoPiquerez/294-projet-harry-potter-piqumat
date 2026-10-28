@@ -35,7 +35,7 @@
           item-title="name"
           item-value="id"
           :items="characterStore.species"
-          label="Race"
+          label="Espèce"
           prepend-inner-icon="mdi-filter"
           variant="outlined"
         />

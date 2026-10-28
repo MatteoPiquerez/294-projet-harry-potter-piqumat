@@ -19,7 +19,7 @@
 
     <v-card
       v-else
-      class="mx-auto"
+      class="mx-auto card"
       max-width="800"
     >
       <v-img
@@ -35,6 +35,16 @@
       <v-card-subtitle>
         Maison {{ character.house }}
       </v-card-subtitle>
+
+      <v-list>
+        <v-list-item
+          v-for="(cle, c) in cles"
+          :key="c"
+          class="list-item"
+        >
+          {{ cle }} : {{ character[cle] }}
+        </v-list-item>
+      </v-list>
 
       <v-card-text>
         <p v-if="character.description" class="text-body-1 mb-4">
@@ -61,4 +71,32 @@
   const character = computed(() => {
     return characterStore.getCharacterById(route.params.id)
   })
+
+  // créer un tableau avec toutes les propriétés de chaque objet
+  // (chaque objet n'a pas forcément les mêmes propriétés)
+  const cles = []
+  for (const cle in character.value) {
+    if (cle === 'id' || cle === 'image' || cle === 'name') {
+      continue
+    }
+    cles.push(cle)
+  }
+
 </script>
+
+<style scoped>
+.card {
+  padding: 10% 10% 2%;
+}
+
+.list-item {
+  margin: 5px 0;
+
+}
+
+.list-item:hover {
+  background-color: darkgray;
+  border-radius: 15px;
+}
+
+</style>
