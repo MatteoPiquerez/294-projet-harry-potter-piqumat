@@ -6,6 +6,20 @@ trouver les icons mdi : https://pictogrammers.com/library/mdi/
 tester si la valeur des clé des personnages sont des tableaux : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 
+ia 
+Claude Code v2.1.246
+Opus 5 
+
+à corriger la fonction dans imageUrl.js pour que ça appelle l'image dans public/
+voilà le bout de code exact qu'il a fait 
+```js
+export function getImageUrl (filename, fallback = '/default_user_image.png') {
+    if (!filename) {
+        return fallback
+    }
+    return `${import.meta.env.VITE_API_URL}/${filename}`
+}
+```
 
 
 # 🌐 Mon Projet Vue.js & Vuetify

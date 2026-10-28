@@ -32,7 +32,7 @@
   import { useCharacterStore } from '@/stores/characterStore.js'
   import { getImageUrl } from '@/utils/imageUrl'
 
-  defineProps({
+  const { character } = defineProps({
     character: {
       type: Object,
       required: true,

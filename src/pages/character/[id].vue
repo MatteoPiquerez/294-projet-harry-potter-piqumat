@@ -28,6 +28,7 @@
         height="300"
         :src="getImageUrl(character.image)"
       />
+
       <v-card-title class="text-h4">
         {{ character.name }}
       </v-card-title>
