@@ -1,4 +1,6 @@
 <template>
+
+  <!-- Page qui va afficher tous les favoris de l'utilisateur -->
   <v-container>
     <h1 class="text-h3 text-center my-6">
       Mes favoris ({{ characterStore.totalFavorites }})

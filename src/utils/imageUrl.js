@@ -1,7 +1,8 @@
 // src/utils/imageUrl.js
 
 /**
- * Retourne l'URL complète d'une image dans le dossier /images/
+ * Retourne l'URL complète d'une image pour aller la chercher sur internet.
+ * Ou alors retourne l'image par défaut (fallback) si filename est vide.
  */
 export function getImageUrl (filename, fallback = '/default_user_image.png') {
   if (!filename) {

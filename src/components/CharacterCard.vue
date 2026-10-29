@@ -1,4 +1,8 @@
 <template>
+  <!--
+  Carte générer pour chaque personnage avec son image et son espèce
+  La carte est cliquable et redirige vers la vue détaillé du personnage
+  -->
   <v-card class="v-card" hover :to="`/character/${character.id}`">
     <v-img
       :alt="character.name"
@@ -9,9 +13,12 @@
       width="220"
     />
     <v-card-title>{{ character.name }}</v-card-title>
-    <v-card-subtitle>Maison {{ character.house }}</v-card-subtitle>
+    <v-card-subtitle>{{ character.species }}</v-card-subtitle>
+
     <v-card-actions>
       <v-spacer />
+
+      <!-- Le bouton coeur pour ajouter ou retirer le personnage des favoris   -->
       <v-btn
         :class="{ 'favorite-active': characterStore.isFavorite(character) }"
         :color="characterStore.isFavorite(character) ? 'red' : ''"
@@ -20,6 +27,8 @@
         @click.stop.prevent="handleToggleFavorite()"
       />
     </v-card-actions>
+
+    <!-- La snackbar d'information pour nous avertir de l'ajout au du retrait des favoris -->
     <v-snackbar
       v-model="showSnackbar"
       color="primary"
@@ -45,6 +54,12 @@
   const showSnackbar = ref(false)
   const snackbarMessage = ref('')
 
+  /**
+   * Fonction qui va ajouter le personnage des favoris s'il n'y était pas
+   * et le retirer s'il y était déjà.
+   * Ensuite déterminer le message qui sera afficher dans la snackbar,
+   * et afficher la snackbar.
+   */
   function handleToggleFavorite () {
     const wasFavorite = characterStore.isFavorite(character)
     characterStore.toggleFavorite(character)

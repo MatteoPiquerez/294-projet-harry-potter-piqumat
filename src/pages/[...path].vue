@@ -31,7 +31,3 @@
     </v-btn>
   </v-container>
 </template>
-
-<script setup>
-// Aucune logique JavaScript additionnelle nécessaire ici
-</script>

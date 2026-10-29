@@ -1,7 +1,9 @@
 <template>
-  <v-container>
-    <h1 class="text-h3 text-center my-6"></h1>
 
+  <!-- contenant qui va afficher une CharacterCard pour chaque personnage -->
+  <v-container>
+
+    <!-- ce v-row est un contenant global pour tous les champs de recherche -->
     <v-row class="mb-4">
       <!--
       Champ de recherche par nom
@@ -21,9 +23,9 @@
       </v-col>
 
       <!--
-      Filtre par type
-        * v-select affiche un menu déroulant avec les types disponibles
-        * :items utilise les types chargés depuis l'API
+      Filtre par espèce
+        * v-select affiche un menu déroulant avec les espèces disponibles
+        * :items utilise la liste des espèces contenue dans le store
         * item-title et item-value définissent quelles propriétés afficher/utiliser
       -->
       <v-col cols="12" md="4" sm="6">
@@ -110,7 +112,7 @@
   import { useCharacterStore } from '@/stores/characterStore.js'
 
   // URL de l'API pour le message d'erreur
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me/'
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me'
 
   // Instancier le store
   const characterStore = useCharacterStore()
@@ -132,12 +134,12 @@
    */
 
   /**
-   * Étape 1 : Filtrer par type
-   * Si un type est sélectionné, ne garder que les Pokémon qui possèdent ce type
+   * Étape 1 : Filtrer par espèce
+   * Si une espèce est sélectionné, ne garder que les Personnages de cette espèce
    */
   const filteredBySpecies = computed(() => {
-    if (!selectedSpecies.value) return characterStore.characters
-    return characterStore.characters.filter(character =>
+    if (!selectedSpecies.value) return characters.value
+    return characters.value.filter(character =>
       character.species.includes(selectedSpecies.value),
     )
   })

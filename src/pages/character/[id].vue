@@ -9,6 +9,7 @@
       Retour
     </v-btn>
 
+    <!-- affiche un message d'erreur si le personnage n'est pas trouvé -->
     <v-alert
       v-if="!character"
       type="error"
@@ -17,6 +18,7 @@
       Personnage non trouvé.
     </v-alert>
 
+    <!-- Carte contenant toutes les informations sur le personnage -->
     <v-card
       v-else
       class="mx-auto card"
@@ -38,6 +40,7 @@
         Information sur le personnage
       </v-card-subtitle>
 
+      <!-- boucle sur tous les propriété du personnage et affiche leur valeur -->
       <v-list>
         <v-list-item
           v-for="(cle, c) in cles"
@@ -48,12 +51,6 @@
           <span class="valeur">{{ getValeurAafficher(character[cle]) }}</span>
         </v-list-item>
       </v-list>
-
-      <v-card-text>
-        <p v-if="character.description" class="text-body-1 mb-4">
-          {{ character.description }}
-        </p>
-      </v-card-text>
     </v-card>
   </v-container>
 </template>
@@ -64,6 +61,7 @@
   import { getImageUrl } from '@/utils/imageUrl'
 
   // Récupérer l'ID depuis les paramètres de la route
+  // TODO : est ce que ça récupère vraiment l'ID ?
   const route = useRoute()
 
   // Instancier le store
@@ -75,8 +73,9 @@
     return characterStore.getCharacterById(route.params.id)
   })
 
-  // créer un tableau avec toutes les propriétés de chaque objet
-  // (chaque objet n'a pas forcément les mêmes propriétés)
+  // créer un tableau avec toutes les propriétés de chaque personnage
+  // (tous les personnages n'ont pas forcément les mêmes propriétés)
+  // Les id, les images et les noms des personnages ne sont pas affichés
   const cles = []
   for (const cle in character.value) {
     if (cle === 'id' || cle === 'image' || cle === 'name') {
@@ -87,6 +86,7 @@
 
   // sépare les clés avec plusieurs mots collés (alternativeName par ex.) grâce à la majuscule de chaque mot
   // puis concate les mots du tableau en seule String avec un espace au milieu et transforme le tout en majuscule
+  // Cela permet un affichage plus propres
   const cleTransforme = cle => cle.split(/(?=[A-Z])/).join(' ').toUpperCase()
 
   /**
@@ -96,6 +96,7 @@
    * @return {*|string} La valeur en seule chaîne.
    */
   function getValeurAafficher (valeur) {
+    // TODO : je pense que je peux améliorer cette fonction
     if (valeur === null || valeur === undefined) return ''
     if (Array.isArray(valeur)) {
       let list = ''
@@ -103,6 +104,7 @@
         if (i !== 0) {
           list += ', '
         }
+        // chaque élément de la liste est entouré de guillemet (volontaire).
         list += `"${valeur[i]}"`
       }
       return list

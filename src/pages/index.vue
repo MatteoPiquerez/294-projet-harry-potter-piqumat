@@ -1,6 +1,10 @@
 <template>
+
+  <!-- Page d'accueil du site -->
   <v-container>
     <h1 class="text-h3 text-center my-6">HarryPotterDex</h1>
+
+    <!-- Affiche un menu de 2 onglets pour aller soit sur les sortilèges soit les personnages -->
     <v-tabs v-model="tab" grow>
       <v-tab value="personnages">
         <v-icon icon="mdi-account-outline" />
@@ -12,6 +16,11 @@
       </v-tab>
     </v-tabs>
 
+    <!--
+    Contenu des 2 onglets :
+    1. Le contenant des personnages (CharacterContainer)
+    2. Le contenant des sortilèges (SpellsContainer)
+    -->
     <v-tabs-window v-model="tab">
       <v-tabs-window-item value="personnages">
         <character-container />
@@ -25,6 +34,7 @@
 
 <script setup>
   import CharacterContainer from '@/components/CharacterContainer.vue'
+  import SpellsContainer from '@/components/SpellsContainer.vue'
 
   const tab = ref('personnages')
 </script>

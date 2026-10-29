@@ -1,8 +1,5 @@
-<script setup>
-
-</script>
-
 <template>
+  <!-- Page qui fournit des informations sur l'application -->
   <v-container>
     <h1 class="text-h3 text-center my-6">À propos</h1>
 
@@ -21,7 +18,3 @@
     </v-card>
   </v-container>
 </template>
-
-<style scoped>
-
-</style>

@@ -1,9 +1,6 @@
 <template>
-  <!--
-  Barre d'application plate
-    * flat supprime l'ombre sous la barre
-  -->
-  <v-app-bar flat>
+  <!-- Barre d'application plate -->
+  <v-app-bar>
     <!--
     Conteneur de la barre d'application
       * class="d-flex align-center" aligne les éléments verticalement au centre
@@ -55,8 +52,5 @@ Définition des éléments de menu pour la navigation
     { title: 'Accueil', path: '/', icon: 'mdi-deathly-hallows' },
     { title: 'Favoris', path: '/favoris', icon: 'mdi-heart' },
     { title: 'À propos', path: '/a-propos', icon: 'mdi-information' },
-    // Ajouter ici les autres liens du menu.
-    // Vous trouverez des icônes sur https://pictogrammers.com/library/mdi/
-    // N'oubliez pas d'ajouter le préfixe 'mdi-' devant le nom de l'icône.
   ]
 </script>

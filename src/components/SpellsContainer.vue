@@ -1,6 +1,7 @@
 <template>
+
+  <!-- contenant qui va afficher une SpellCard pour chaque sortilège -->
   <v-container>
-    <h1 class="text-h3 text-center my-6"></h1>
 
     <v-row class="mb-4">
       <!--
@@ -33,7 +34,7 @@
       >
         <v-skeleton-loader
           height="350"
-          type="image, article"
+          type="article"
         />
       </v-col>
     </v-row>
@@ -71,7 +72,7 @@
   import { useCharacterStore } from '@/stores/characterStore.js'
 
   // URL de l'API pour le message d'erreur
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me/'
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me'
 
   // Instancier le store
   const characterStore = useCharacterStore()
@@ -88,7 +89,7 @@
 
   /**
    * Filtrer par recherche
-   * Utilise spells (du store) comme source
+   * Utilise spells comme source
    * La recherche est insensible à la casse (toLowerCase)
    */
   const filteredBySearch = computed(() => {

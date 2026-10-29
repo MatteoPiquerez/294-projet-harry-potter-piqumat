@@ -2,6 +2,7 @@ import { defineStore } from 'pinia'
 import api from '@/plugins/axios.js'
 
 export const useCharacterStore = defineStore('character', {
+
   state: () => ({
     isLoading: false,
     spells: [],
@@ -30,7 +31,7 @@ export const useCharacterStore = defineStore('character', {
     },
 
     /**
-     * Trouve un Personnage par son identifiant.
+     * Trouve un Personnage par son id.
      * Retourne une fonction (getter avec paramètre).
      * @param {Object} state - Le state du store
      * @returns {function(number): Object|undefined}
@@ -63,7 +64,7 @@ export const useCharacterStore = defineStore('character', {
     },
 
     /**
-     * Fonction qui va transformer la liste d'id de personnage en objet Personnage.
+     * Fonction qui va transformer la liste d'id des personnages favoris en objet Personnage.
      * @param {object} state - le state du store
      * @returns {Object[]} la liste des personnages (objet).
      */
@@ -88,7 +89,7 @@ export const useCharacterStore = defineStore('character', {
 
       try {
         await Promise.all([
-          this.fetchCharacters({ withLoader: false }),
+          this.fetchCharacters({ withLoader: true }),
           this.fetchSpells({ withLoader: false }),
         ])
         this.loadFavorites()
@@ -100,22 +101,37 @@ export const useCharacterStore = defineStore('character', {
       }
     },
 
+    /**
+     * Fonction qui va appeler l'API pour charger tous les sortilèges.
+     * @param withLoader Pour charger silencieusement ou non
+     * @return {Promise<void>} ne retourne rien
+     */
     async fetchSpells ({ withLoader = true } = {}) {
-      if (withLoader) this.isLoading = true
-
+      if (withLoader) {
+        this.isLoading = true
+      }
       try {
-        const response = await api.get('/api/harrypotter/spells')
+        const response = await api.get('/api/harrypotter/spells?limit=100')
         this.spells = response.data.data
       } catch (error) {
         console.error('Erreur lors du chargement des sortilèges:', error.message)
         this.spells = []
       } finally {
-        if (withLoader) this.isLoading = false
+        if (withLoader) {
+          this.isLoading = false
+        }
       }
     },
 
+    /**
+     * Fonction qui va appeler l'API pour charger tous les personnages.
+     * @param withLoader Pour charger silencieusement ou non
+     * @return {Promise<void>} ne retourne rien
+     */
     async fetchCharacters ({ withLoader = true } = {}) {
-      if (withLoader) this.isLoading = true
+      if (withLoader) {
+        this.isLoading = true
+      }
       try {
         const response = await api.get('/api/harrypotter/characters?limit=100')
         this.characters = response.data.data
@@ -124,7 +140,9 @@ export const useCharacterStore = defineStore('character', {
         console.error('Erreur lors du chargement des Personnages :', error.message)
         this.characters = []
       } finally {
-        if (withLoader) this.isLoading = false
+        if (withLoader) {
+          this.isLoading = false
+        }
       }
     },
 
@@ -137,7 +155,7 @@ export const useCharacterStore = defineStore('character', {
         const savedFavorites = localStorage.getItem('character_favorites')
         if (savedFavorites) {
           this.favorites = JSON.parse(savedFavorites)
-          console.log('Favoris chargés :', this.favorites.length, 'éléments')
+          console.log('Favoris chargés :', this.totalFavorites, 'éléments')
         } else {
           this.favorites = []
         }
@@ -180,6 +198,7 @@ export const useCharacterStore = defineStore('character', {
       this.saveFavorites()
     },
 
+    // TODO : a garder ou pas ? si oui -> documenter
     cleanupFavorites () {
       const initialCount = this.favorites.length
 

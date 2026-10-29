@@ -1,4 +1,5 @@
 <template>
+  <!-- Carte qui affiche le titre et la description d'un sortilège -->
   <v-card class="h-100" hover>
     <v-card-title class="text-wrap">{{ spell.name }}</v-card-title>
     <v-card-text>Description : {{ spell.description }}</v-card-text>
@@ -6,7 +7,6 @@
 </template>
 
 <script setup>
-
   const { spell } = defineProps({
     spell: {
       type: Object,
