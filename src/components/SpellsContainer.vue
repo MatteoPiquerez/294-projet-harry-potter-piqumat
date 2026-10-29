@@ -2,105 +2,46 @@
   <v-container>
     <h1 class="text-h3 text-center my-6"></h1>
 
-    <v-row class="mb-4">
-      <!--
-      Champ de recherche par nom
-        * v-model lie la valeur au ref searchQuery
-        * clearable ajoute un bouton pour vider le champ
-      -->
-      <!--      <v-col cols="12" md="4" sm="6">-->
-      <!--        <v-text-field-->
-      <!--          v-model="searchQuery"-->
-      <!--          clearable-->
-      <!--          density="compact"-->
-      <!--          hide-details-->
-      <!--          label="Rechercher un personnage"-->
-      <!--          prepend-inner-icon="mdi-magnify"-->
-      <!--          variant="outlined"-->
-      <!--        />-->
-      <!--      </v-col>-->
-
-      <!--
-      Filtre par type
-        * v-select affiche un menu déroulant avec les types disponibles
-        * :items utilise les types chargés depuis l'API
-        * item-title et item-value définissent quelles propriétés afficher/utiliser
-      -->
-      <!--      <v-col cols="12" md="4" sm="6">-->
-      <!--        <v-select-->
-      <!--          v-model="selectedSpecies"-->
-      <!--          clearable-->
-      <!--          density="compact"-->
-      <!--          hide-details-->
-      <!--          item-title="name"-->
-      <!--          item-value="id"-->
-      <!--          :items="characterStore.species"-->
-      <!--          label="Espèce"-->
-      <!--          prepend-inner-icon="mdi-filter"-->
-      <!--          variant="outlined"-->
-      <!--        />-->
-      <!--      </v-col>-->
-
-      <!--
-      Bouton de tri
-        * Alterne entre tri ascendant (A→Z) et descendant (Z→A)
-        * L'icône change selon l'ordre actuel
-      -->
-      <!--      <v-col class="d-flex align-center" cols="12" md="4">-->
-      <!--        <v-btn-->
-      <!--          :prepend-icon="sortOrder === 'asc'-->
-      <!--            ? 'mdi-sort-alphabetical-ascending'-->
-      <!--            : 'mdi-sort-alphabetical-descending'"-->
-      <!--          variant="outlined"-->
-      <!--          @click="toggleSort"-->
-      <!--        >-->
-      <!--          Tri {{ sortOrder === 'asc' ? 'A → Z' : 'Z → A' }}-->
-      <!--        </v-btn>-->
-      <!--      </v-col>-->
-      <!--    </v-row>-->
-
-      <!-- Squelettes de chargement pendant la requête API -->
-      <v-row v-if="characterStore.isLoading">
-        <v-col
-          v-for="n in 8"
-          :key="n"
-          cols="12"
-          lg="3"
-          md="4"
-          sm="6"
-        >
-          <v-skeleton-loader
-            height="350"
-            type="image, article"
-          />
-        </v-col>
-      </v-row>
-
-      <!-- Message d'erreur si aucun Pokémon chargé -->
-      <v-alert
-        v-else-if="characterStore.totalSpells === 0"
-        class="mb-6"
-        type="error"
-        variant="tonal"
+    <!-- Squelettes de chargement pendant la requête API -->
+    <v-row v-if="characterStore.isLoading">
+      <v-col
+        v-for="n in 8"
+        :key="n"
+        cols="12"
+        lg="3"
+        md="4"
+        sm="6"
       >
-        Impossible de charger les Sortilèges. Vérifiez que l'API tourne sur
-        {{ apiUrl }}.
-      </v-alert>
+        <v-skeleton-loader
+          height="350"
+          type="image, article"
+        />
+      </v-col>
+    </v-row>
 
-      <!-- Grille de cartes (cas normal) -->
-      <v-row v-else>
-        <v-col
-          v-for="spell in characterStore.spells"
-          :key="spell.id"
-          cols="12"
-          lg="3"
-          md="4"
-          sm="6"
-        >
-          {{ spell.name }}
-          {{ spell.description }}
-        </v-col>
-      </v-row>
+    <!-- Message d'erreur si aucun sortilèges n'est chargé -->
+    <v-alert
+      v-else-if="characterStore.totalSpells === 0"
+      class="mb-6"
+      type="error"
+      variant="tonal"
+    >
+      Impossible de charger les Sortilèges. Vérifiez que l'API tourne sur
+      {{ apiUrl }}.
+    </v-alert>
+
+    <!-- Grille de cartes (cas normal) -->
+    <v-row v-else>
+      <v-col
+        v-for="spell in characterStore.spells"
+        :key="spell.id"
+        cols="12"
+        lg="3"
+        md="4"
+        sm="6"
+      >
+        <spell-card :spell="spell" />
+      </v-col>
     </v-row>
   </v-container>
 </template>
@@ -108,7 +49,6 @@
 <script setup>
 // Import du store et de storeToRefs
 import {storeToRefs} from 'pinia'
-import CharacterCard from '@/components/CharacterCard.vue'
 import {useCharacterStore} from '@/stores/characterStore.js'
 
 // URL de l'API pour le message d'erreur

@@ -21,6 +21,15 @@ export const useCharacterStore = defineStore('character', {
     },
 
     /**
+     * Nombre total de sortilèges dans le store.
+     * @param {Object} state - Le state du store
+     * @returns {number}
+     */
+    totalSpells: state => {
+      return state.characters.length
+    },
+
+    /**
      * Trouve un Personnage par son identifiant.
      * Retourne une fonction (getter avec paramètre).
      * @param {Object} state - Le state du store

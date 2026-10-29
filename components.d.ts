@@ -14,6 +14,7 @@ declare module 'vue' {
     CharacterContainer: typeof import('./src/components/CharacterContainer.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    SpellCard: typeof import('./src/components/SpellCard.vue')['default']
     SpellsContainer: typeof import('./src/components/SpellsContainer.vue')['default']
   }
 }

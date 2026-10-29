@@ -2,8 +2,14 @@
   <v-container>
     <h1 class="text-h3 text-center my-6">HarryPotterDex</h1>
     <v-tabs v-model="tab" grow>
-      <v-tab value="personnages"> Personnages </v-tab>
-      <v-tab value="sortileges"> Sortilèges </v-tab>
+      <v-tab value="personnages">
+        <v-icon icon="mdi-account-outline" />
+        &nbsp; Personnages
+      </v-tab>
+      <v-tab value="sortileges">
+        <v-icon icon="mdi-creation-outline" />
+        &nbsp; Sortilèges
+      </v-tab>
     </v-tabs>
 
     <v-tabs-window v-model="tab">
