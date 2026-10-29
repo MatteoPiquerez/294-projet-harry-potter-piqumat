@@ -15,7 +15,7 @@
       -->
       <v-avatar
         class="mr-4 pa-0 cursor-pointer"
-        image="@/assets/harry-potter-logo.png"
+        image="@/assets/hogwarts_logo.png"
         size="64"
         @click="$router.push('/')"
       />

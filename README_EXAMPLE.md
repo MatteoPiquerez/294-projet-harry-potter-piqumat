@@ -1,4 +1,36 @@
-site visité 
+- est ce que je peux utiliser toSort(). 165
+
+Questions à poser au prof : 
+- est-ce qu'il faut rajouter des trucs ou si je laisse comme ça fait une bonne note ?
+- est-ce que hardcoder la liste des espèces est une bonne idée ou pas ? (je pense que j'ai meilleur temps de faire une fonction pour le faire)
+- pourquoi quand je clique sur une carte de personnage, j'arrive tous en bas de la vue détaillée ?
+- est ce que il y a besoin de faire les imports ou pas ? (malus ?) ex: dans index.vue l'import des 2 containers est optionnel. Quelle sont les règles avec les imports ?
+- pourquoi dans la fonction init() à l'appel des 2 fetchs le withLoader est à false (comme dans pokédex) ? Il ne devrait pas à true ?
+- Pourquoi le logo du site ne s'affiche pas ? 
+  - Est-ce que ma déclaration des icons est corrects dans mon fichier html 
+  - est-ce que les icon et image sont à la bonne place ? (favicon dans public, autre dans assest/favicon)
+  - est-ce que favicon est le bon nom pour ce dossier ? 
+- est ce que c'est normal toutes ces erreurs dans la console ?
+- lors du prochain cours : est-ce que on a besoin de garder la fonction cleanUpFavorite() ? 
+
+à faire semaine pro : 
+- corriger les réponses du prof à mes questions
+- demander à claude code les améliorations que je peux faire
+- rédiger la documentation de manière détaillée 
+- lire chaque étape du projet pokédex et regarder si j'ai tout fait correctement et tout intégré.
+- checker les todo
+
+Optionnel : 
+- essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
+
+
+
+
+
+ 
+
+
+site visité : 
 
 pour les polices : https://gwfh.mranftl.com/fonts
 pour séparer les key de mes character (alternativeName par exemple ) : https://stackoverflow.com/questions/7888238/javascript-split-string-on-uppercase-characters
@@ -6,6 +38,11 @@ trouver les icons mdi : https://pictogrammers.com/library/mdi/
 tester si la valeur des clé des personnages sont des tableaux : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 menu de navigation entre personnages et sortilège : https://vuetifyjs.com/en/components/tabs/#usage
+pour tous les composant vue et leur documentation : https://v2.vuetifyjs.com
+
+
+
+
 
 ia 
 Claude Code v2.1.246

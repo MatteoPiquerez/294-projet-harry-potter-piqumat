@@ -60,8 +60,7 @@
   import { useCharacterStore } from '@/stores/characterStore'
   import { getImageUrl } from '@/utils/imageUrl'
 
-  // Récupérer l'ID depuis les paramètres de la route
-  // TODO : est ce que ça récupère vraiment l'ID ?
+  // Récupère les informations de la page
   const route = useRoute()
 
   // Instancier le store
