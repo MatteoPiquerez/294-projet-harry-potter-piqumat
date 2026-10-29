@@ -1,10 +1,12 @@
 <template>
-  <v-card hover :to="`/character/${character.id}`">
+  <v-card class="v-card" hover :to="`/character/${character.id}`">
     <v-img
       :alt="character.name"
+      class="mx-auto"
       cover
-      height="200"
+      height="auto"
       :src="getImageUrl(character.image)"
+      width="220"
     />
     <v-card-title>{{ character.name }}</v-card-title>
     <v-card-subtitle>Maison {{ character.house }}</v-card-subtitle>
@@ -54,5 +56,9 @@
 <style scoped>
 .favorite-active {
   animation: heartbeat 0.6s ease-in-out;
+}
+
+.v-card {
+  padding: 15% 0 0;
 }
 </style>

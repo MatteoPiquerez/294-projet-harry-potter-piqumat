@@ -25,8 +25,9 @@
       <v-img
         :alt="character.name"
         cover
-        height="300"
+        height="auto"
         :src="getImageUrl(character.image)"
+        width="1000"
       />
 
       <v-card-title class="text-h4">

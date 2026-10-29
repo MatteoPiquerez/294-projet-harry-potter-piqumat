@@ -110,7 +110,7 @@
   import { useCharacterStore } from '@/stores/characterStore.js'
 
   // URL de l'API pour le message d'erreur
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me/api/harrypotter'
+  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me/'
 
   // Instancier le store
   const characterStore = useCharacterStore()
