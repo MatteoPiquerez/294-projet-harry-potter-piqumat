@@ -159,12 +159,12 @@
 
   /**
    * Étape 3 : Trier par nom
-   * [...] crée une copie pour ne pas modifier le tableau filtré
+   * La méthode toSorted fonctionne comme sort() mais ne travaille
+   * pas sur le tableau original, mais une copie
    * localeCompare('fr') gère les accents français
    */
   const sortedCharacters = computed(() => {
-    // TODO : le linter me conseille d'utiliser toSorted() au lieu de sort() -> poser la question au prof
-    return [...filteredBySearch.value].sort((a, b) => {
+    return filteredBySearch.value.toSorted((a, b) => {
       const comparison = a.name.localeCompare(b.name, 'fr')
       return sortOrder.value === 'asc' ? comparison : -comparison
     })
