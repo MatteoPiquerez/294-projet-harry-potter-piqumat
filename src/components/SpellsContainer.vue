@@ -69,6 +69,7 @@
 <script setup>
   // Import du store et de storeToRefs
   import { storeToRefs } from 'pinia'
+  import SpellCard from '@/components/SpellCard.vue'
   import { useCharacterStore } from '@/stores/characterStore.js'
 
   // URL de l'API pour le message d'erreur

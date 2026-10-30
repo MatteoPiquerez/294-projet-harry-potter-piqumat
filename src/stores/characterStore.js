@@ -7,7 +7,7 @@ export const useCharacterStore = defineStore('character', {
     isLoading: false,
     spells: [],
     characters: [],
-    species: ['human', 'ghost', 'poltergeist', 'owl', 'toad', 'goblin', 'dog', 'phoenix', 'cat', 'half-giant'],
+    species: [],
     favorites: [],
   }),
 
@@ -89,10 +89,12 @@ export const useCharacterStore = defineStore('character', {
 
       try {
         await Promise.all([
-          this.fetchCharacters({ withLoader: true }),
+          // withLoader est à false car isLoading est déjà mis à true quelques lignes en dessus.
+          this.fetchCharacters({ withLoader: false }),
           this.fetchSpells({ withLoader: false }),
         ])
         this.loadFavorites()
+        this.initSpecies()
         console.log('Store Personnage initialisé')
       } catch (error) {
         console.error('Erreur lors de l\'initialisation:', error)
@@ -213,5 +215,16 @@ export const useCharacterStore = defineStore('character', {
       }
     },
 
+    /**
+     * Fonction qui va permettre de lister toutes les espèces des personnages
+     */
+    initSpecies () {
+      for (const character of this.characters) {
+        const species = character.species
+        if (!this.species.includes(species)) {
+          this.species.push(species)
+        }
+      }
+    },
   },
 })

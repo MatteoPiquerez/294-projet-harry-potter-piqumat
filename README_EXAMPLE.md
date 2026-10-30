@@ -1,19 +1,16 @@
-- est ce que je peux utiliser toSort(). 165
-
 Questions à poser au prof : 
 - est-ce qu'il faut rajouter des trucs ou si je laisse comme ça fait une bonne note ?
-- est-ce que hardcoder la liste des espèces est une bonne idée ou pas ? (je pense que j'ai meilleur temps de faire une fonction pour le faire)
-- pourquoi quand je clique sur une carte de personnage, j'arrive tous en bas de la vue détaillée ?
-- est ce que il y a besoin de faire les imports ou pas ? (malus ?) ex: dans index.vue l'import des 2 containers est optionnel. Quelle sont les règles avec les imports ?
-- pourquoi dans la fonction init() à l'appel des 2 fetchs le withLoader est à false (comme dans pokédex) ? Il ne devrait pas à true ?
-- Pourquoi le logo du site ne s'affiche pas ? 
+- pourquoi quand je clique sur une carte de personnage, j'arrive tous en bas de la vue détaillée (pas pour tous : bizarre) ?
+- Pourquoi le logo du site ne s'affiche pas sur firefox developers ? 
   - Est-ce que ma déclaration des icons est corrects dans mon fichier html 
   - est-ce que les icon et image sont à la bonne place ? (favicon dans public, autre dans assest/favicon)
   - est-ce que favicon est le bon nom pour ce dossier ? 
-- est ce que c'est normal toutes ces erreurs dans la console ?
+- est ce que c'est normal toutes ces erreurs dans la console (vercell) ? sur mon pc du boulot j'ai des erreurs css mais pas sur celui ici de l'école
 - lors du prochain cours : est-ce que on a besoin de garder la fonction cleanUpFavorite() ? 
 
 à faire semaine pro : 
+- faire une fonction pour les éspèces
+- rajouter les imports dans les fichiers
 - corriger les réponses du prof à mes questions
 - demander à claude code les améliorations que je peux faire
 - rédiger la documentation de manière détaillée 
