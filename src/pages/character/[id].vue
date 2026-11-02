@@ -90,23 +90,16 @@
 
   /**
    * Retourne la valeur à afficher pour chaque key du personnage
-   * si la valeur et un tableau, on va retourner une seule chaîne.
+   * si la valeur est un tableau, on va retourner une seule chaîne.
+   * Chaque mot de la chaîne est entouré de guillemet et séparé par un virgule.
    * @param valeur la valeur correspondant à la clé.
-   * @return {*|string} La valeur en seule chaîne.
+   * @return {string|*} La valeur en seule chaîne.
    */
   function getValeurAafficher (valeur) {
-    // TODO : je pense que je peux améliorer cette fonction
     if (valeur === null || valeur === undefined) return ''
     if (Array.isArray(valeur)) {
-      let list = ''
-      for (let i = 0; i < valeur.length; i++) {
-        if (i !== 0) {
-          list += ', '
-        }
-        // chaque élément de la liste est entouré de guillemet (volontaire).
-        list += `"${valeur[i]}"`
-      }
-      return list
+      // chaque élément de la liste est entouré de guillemets (volontaire).
+      return valeur.map(v => `"${v}"`).join(', ')
     }
     return valeur
   }

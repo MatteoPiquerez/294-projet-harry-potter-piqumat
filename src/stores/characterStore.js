@@ -216,15 +216,10 @@ export const useCharacterStore = defineStore('character', {
     },
 
     /**
-     * Fonction qui va permettre de lister toutes les espèces des personnages
+     * Liste toutes les espèces (sans doublon) des personnages.
      */
     initSpecies () {
-      for (const character of this.characters) {
-        const species = character.species
-        if (!this.species.includes(species)) {
-          this.species.push(species)
-        }
-      }
+      this.species = [...new Set(this.characters.map(c => c.species))]
     },
   },
 })

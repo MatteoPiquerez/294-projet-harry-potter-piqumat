@@ -41,13 +41,13 @@
 </template>
 
 <script setup>
-/*
-Définition des éléments de menu pour la navigation
-  - Chaque élément contient :
-    * title : le titre du lien
-    * path : le chemin de la route
-    * icon : l'icône du lien
-*/
+  /*
+  Définition des éléments de menu pour la navigation
+    - Chaque élément contient :
+      * title : le titre du lien
+      * path : le chemin de la route
+      * icon : l'icône du lien
+  */
   const menuItems = [
     { title: 'Accueil', path: '/', icon: 'mdi-deathly-hallows' },
     { title: 'Favoris', path: '/favoris', icon: 'mdi-heart' },
