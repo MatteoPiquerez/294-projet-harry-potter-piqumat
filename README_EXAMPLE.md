@@ -7,19 +7,25 @@ Questions à poser au prof :
   - est-ce que favicon est le bon nom pour ce dossier ? 
 - est ce que c'est normal toutes ces erreurs dans la console (vercell) ? sur mon pc du boulot j'ai des erreurs css mais pas sur celui ici de l'école
 - lors du prochain cours : est-ce que on a besoin de garder la fonction cleanUpFavorite() ? 
+- est-ce qu'il faut faire un fallback si l'api est down. égale, pas forcément obligatoire 
+- pourquoi quand je retire les personnages des favoris depuis la page favoris il n'y a pas la snackbar
+- vous avez parlé d'un getter pour récupérer les espèces. Est-ce que comme j'ai fait ça va ? 
+- est-ce que il y a besoin d'importer les v-img, v-avatar et tous les trucs de vue ? 
+- si j'ai fait la même structure que le pokédex j'ai plus que 2 routes ?
+- est-ce que il doit forcément y avoir des emits qqelque par 
+- à quelle point la doc doit être devoloper (ex Environnement de développement)
+- Je doit mettre quoi dans la section méthodologie, et Test technique ?
 
-à faire semaine pro : 
-- faire une fonction pour les éspèces
-- rajouter les imports dans les fichiers
+à faire semaine pro :
+- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox 
 - corriger les réponses du prof à mes questions
-- demander à claude code les améliorations que je peux faire
-- rédiger la documentation de manière détaillée 
-- lire chaque étape du projet pokédex et regarder si j'ai tout fait correctement et tout intégré.
+- demander à claude code les améliorations que je peux faire (checker s'il y a encore des pokémon)
+- rédiger la documentation de manière détaillée
 - checker les todo
 
 Optionnel : 
 - essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
-
+- rendre le titre responsive 
 
 
 
@@ -29,10 +35,11 @@ Optionnel :
 
 site visité : 
 
+gimp pour modifier les images (aller rechercher les images )
+
 pour les polices : https://gwfh.mranftl.com/fonts
 pour séparer les key de mes character (alternativeName par exemple ) : https://stackoverflow.com/questions/7888238/javascript-split-string-on-uppercase-characters
 trouver les icons mdi : https://pictogrammers.com/library/mdi/
-tester si la valeur des clé des personnages sont des tableaux : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
 menu de navigation entre personnages et sortilège : https://vuetifyjs.com/en/components/tabs/#usage
 pour tous les composant vue et leur documentation : https://v2.vuetifyjs.com
@@ -65,6 +72,63 @@ code exact généré :
     <v-card-text>Description : {{ spell.description }}</v-card-text>
   </v-card>
 ```
+
+
+
+CLaude free 
+Sonnet 5.5
+Mon code : 
+```js
+  function getValeurAafficher (valeur) {
+    if (valeur === null || valeur === undefined) return ''
+    if (Array.isArray(valeur)) {
+        let list = ''
+        for (let i = 0; i < valeur.length; i++) {
+            if (i !== 0) {
+                list += ', '
+            }
+            // chaque élément de la liste est entouré de guillemet (volontaire).
+            list += `"${valeur[i]}"`
+        }
+        return list
+    }
+    return valeur
+}
+```
+Amélioration de claude : 
+```js
+function getValeurAafficher(valeur) {
+  if (valeur === null || valeur === undefined) return ''
+  if (Array.isArray(valeur)) {
+    // chaque élément de la liste est entouré de guillemets (volontaire).
+    return valeur.map(v => `"${v}"`).join(', ')
+  }
+  return valeur
+}
+```
+
+mon code : 
+```js
+    initSpecies () {
+    for (const character of this.characters) {
+        const species = character.species
+        if (!this.species.includes(species)) {
+            this.species.push(species)
+        }
+    }
+}
+```
+
+amélioration de claude : 
+```js
+    /**
+ * Liste toutes les espèces (sans doublon) des personnages.
+ */
+initSpecies () {
+    this.species = [...new Set(this.characters.map(c => c.species))]
+},
+```
+
 
 
 # 🌐 Mon Projet Vue.js & Vuetify

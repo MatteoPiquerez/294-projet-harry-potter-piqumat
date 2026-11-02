@@ -131,7 +131,7 @@
 }
 
 .valeur {
-  font-family: 'Ysabeau';
+  font-family: 'Ysabeau', serif;
   color: goldenrod;
 }
 
