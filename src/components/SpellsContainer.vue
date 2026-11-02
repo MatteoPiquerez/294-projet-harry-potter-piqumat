@@ -50,6 +50,17 @@
       {{ apiUrl }}.
     </v-alert>
 
+    <!-- Message d'erreur si aucun Sortilège ne correspond à la recherche -->
+    <v-alert
+      v-else-if="filteredBySearch.length === 0"
+      class="mb-6"
+      type="info"
+      variant="tonal"
+    >
+      Celui-dont-on-ne-doit-pas-prononcer-le-nom a tout détruit :
+      Aucun Sortilège ne correspond à votre recherche.
+    </v-alert>
+
     <!-- Grille de cartes (cas normal) -->
     <v-row v-else>
       <v-col

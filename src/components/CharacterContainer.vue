@@ -78,7 +78,7 @@
       </v-col>
     </v-row>
 
-    <!-- Message d'erreur si aucun Pokémon chargé -->
+    <!-- Message d'erreur si aucun Personnage chargé -->
     <v-alert
       v-else-if="characterStore.totalCharacters === 0"
       class="mb-6"
@@ -87,6 +87,17 @@
     >
       Impossible de charger les Personnage. Vérifiez que l'API tourne sur
       {{ apiUrl }}.
+    </v-alert>
+
+    <!-- Message d'erreur si aucun Personnage ne correspond à la recherche -->
+    <v-alert
+      v-else-if="sortedCharacters.length === 0"
+      class="mb-6"
+      type="info"
+      variant="tonal"
+    >
+      Celui-dont-on-ne-doit-pas-prononcer-le-nom a tout détruit :
+      Aucun Personnage ne correspond à votre recherche.
     </v-alert>
 
     <!-- Grille de cartes (cas normal) -->
