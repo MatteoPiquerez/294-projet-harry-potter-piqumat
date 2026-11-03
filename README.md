@@ -100,7 +100,7 @@ _(Capture d’écran de l’application)_
 - ...
 
 ### Choix techniques
-- API sélectionnée : https://apis.divtec.me/api/harrypotter
+- API sélectionnée : https://apis.divtec.me
 - Justification du choix : La Divtec a récupéré toutes les données d'une API Harry Potter connu pour ensuite les reproposer.
 Cela permet d'éviter certaine limitation (quotas, token )
 - Endpoints utilisés :  
@@ -112,6 +112,7 @@ on peut augmenter cette limite à 100 grâce à _?limit=100_ à la fin de l'url
 on peut donc récupérer plusieurs fois 100 objets (autant de fois qu'il y a de page).
 - La pagination n'est pas utilisé dans mon application. 
 J'estimais avoir assez de donnée avec cent objets pour chaque endpoint
+- Il n'y a pas contre pas de quota (par heure par ex)
 
 ### Architecture (Descriptif + schéma simple + data-flow)
 // TODO 
@@ -129,10 +130,15 @@ Outils utiles : Figma / Draw.io / ...
 // TODO 
 
 ### Tests techniques
-- ✅ Appels API fonctionnels : Les appels au API fonctionne, je reçois toutes les bonnes données
-- ✅ Persistance vérifiée après refresh (localStorage)  
-- ✅ Navigation entre les vues OK  
-- ...
+- Le store fonctionne, les données sont récupérer correctement grâce à l'API 
+- La mise en favoris fonctionne, le personnage est ajouté au localStorage et dans la liste des Favoris du store.
+- On peut recharger une page lorsqu'on est sur une route Vue. Le chemin est directement recalculé.
+- Lorsqu'un filtre est ajouté/retiré des recherches, les données sont directement recalculé grâce au Computed.
+- L'affichage de la vue détaillé d'un personnage grâce à son ID fonctionne.
+- Le routage entre chaque page fonctionne. 
+- L'avatar par défaut s'affiche correctement si le personnage ne possède pas d'image
+
+// TODO : chercher sur DEVJs quelques trucs à ajouter (pas besoin de bcp plus)
 
 ### Tests d’UX
 - Navigation intuitive  
@@ -191,9 +197,22 @@ Outils utiles : Figma / Draw.io / ...
 ## 6. 🎯 Bilan personnel
 
 ### Ce que j’ai appris
-- Compétences techniques acquises  
-- Découvertes surprenantes  
-- Concepts difficiles maîtrisés  
+J'ai appris énormément sur le fonctionnement général d'un framework web : 
+- Les application SPA
+- Les composants 
+- les liaisons simplifié avec v-bind
+- le routage automatique pour les pages du dossier pages 
+- Les données recalculées automatiquement grâce à computed. 
+- Les composant préfait Vuetify 
+
+J'ai découvert que l'on peut faire des grosse applications web de manière très simple sans se battre
+avec plein de fichier html. 
+J'étais toujours très impressionnée en voyant de très grosses applications web en imaginant le travail que ça avait du 
+demander. Mais je me rend compte qu'avec des frameworks, c'est beaucoup plus rapide. 
+
+Au début je trouve que ce qui étais compliqué c'étais le nombre de fichier comparé à un projet html tous simple.
+Il y avait plein plein de fichier et de dossier dont je ne savais pas l'utilité.
+Et après plusieurs cours et quelques tuto j'ai commencé à comprendre l'utilité de chaque chose.
 
 ### Difficultés rencontrées
 - Problèmes techniques et solutions trouvées  
@@ -206,14 +225,27 @@ Outils utiles : Figma / Draw.io / ...
 - Envies de développement futur  
 
 ### Améliorations possibles
-- Ce que j’ajouterais avec plus de temps  
-- Fonctionnalités bonus envisagées  
-- Compétences à approfondir  
+**Fonctionnalité que j'ajouterais avec plus de temps :** 
+- Une fonction qui boucle sur les pages de L'API pour récupérer encore plus de données. 
+- Une fonction pour pouvoir ajouter des sort en favoris. 
+- Une fonction de battle : on choisi un personnage, on reçoit une liste de sortilèges et on doit ensuite les 
+utiliser à bonne essient pour attaquer l'ennemi ou parer ses sortilèges. 
+- battle des maisons : on choisit un personnage d'une maison et ensuite il y a des questions et si on répond juste cela 
+nous permet de gagner des points. 
+
+Compétences que j'aimerais approfondir : 
+- En apprendre plus sur les composants Vuetify : La library est gigantesque et j'ai le sentiment de ne pas toujours 
+avoir utiliser le composant le mieux adapté à ce que je voulais faire. Etant donnée que les composant sont déjà stylisé 
+Cela permet de gagner un temps immense. Donc une bonne connaissance des composant est un vrai plus je pense.
+- Apprendre comment marche les classes des composants Vuetify, j'ai vu que sur plein de composant il y a des classes
+qui sont ajouté et je ne sais pas toujours comment elle marche et les styles qu'elle modifie. Pour ce point là aussi,
+je pense que c'est un plus de maitriser ça. 
+
 
 ---
 
 ## 7. 📚 Références & Sources
-- Documentation de l’API : [Nom de l’API](https://...)  
+- Documentation de l’API : [API Harry Potter](https://apis.divtec.me/api/harrypotter/docs)  
 - Tutos clés utilisés : ...  
 - Usage de l’IA : voir section ci-dessus  
 - Autres ressources utiles : ...

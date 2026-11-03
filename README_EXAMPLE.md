@@ -1,26 +1,16 @@
 Questions à poser au prof : 
-- est-ce qu'il faut rajouter des trucs ou si je laisse comme ça fait une bonne note ?
-- pourquoi quand je clique sur une carte de personnage, j'arrive tous en bas de la vue détaillée (pas pour tous : bizarre) ?
-- Pourquoi le logo du site ne s'affiche pas sur firefox developers ? 
-  - Est-ce que ma déclaration des icons est corrects dans mon fichier html 
-  - est-ce que les icon et image sont à la bonne place ? (favicon dans public, autre dans assest/favicon)
-  - est-ce que favicon est le bon nom pour ce dossier ? 
-- est ce que c'est normal toutes ces erreurs dans la console (vercell) ? sur mon pc du boulot j'ai des erreurs css mais pas sur celui ici de l'école
-- lors du prochain cours : est-ce que on a besoin de garder la fonction cleanUpFavorite() ? 
-- est-ce qu'il faut faire un fallback si l'api est down. égale, pas forcément obligatoire 
-- pourquoi quand je retire les personnages des favoris depuis la page favoris il n'y a pas la snackbar
-- vous avez parlé d'un getter pour récupérer les espèces. Est-ce que comme j'ai fait ça va ? 
-- est-ce que il y a besoin d'importer les v-img, v-avatar et tous les trucs de vue ? 
-- si j'ai fait la même structure que le pokédex j'ai plus que 2 routes ?
-- est-ce que il doit forcément y avoir des emits qqelque par 
+- pourquoi quand je retire les personnages des favoris depuis la page favoris il n'y a pas la snackbar. Le prof cherche
+- est-ce que il doit forcément y avoir des emits qqelque par : Non 
 - à quelle point la doc doit être devoloper (ex Environnement de développement)
 - Je doit mettre quoi dans la section méthodologie, et Test technique ?
 
 à faire semaine pro :
-- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox 
-- corriger les réponses du prof à mes questions
+- passer default_user dans assets 
+- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
 - demander à claude code les améliorations que je peux faire (checker s'il y a encore des pokémon)
-- rédiger la documentation de manière détaillée
+- rédiger la documentation de manière détaillée (je peux adapter la doc si besoin)
+- essayer de mettre un autre composant que les v-card pour les sortilèges (vu que elle ne sont pas cliquable)
+- essayer de rajouter des animations css
 - checker les todo
 
 Optionnel : 
@@ -129,7 +119,25 @@ initSpecies () {
 },
 ```
 
+Mon code : 
+```js
+const cles = []
+for (const cle in character.value) {
+    if (cle === 'id' || cle === 'image' || cle === 'name') {
+        continue
+    }
+    cles.push(cle)
+}
+```
 
+Correction de claude : 
+```js
+const CLES_EXCLUES = new Set(['id', 'image', 'name'])
+const cles = computed(() =>
+    Object.keys(character.value)
+        .filter(cle => !CLES_EXCLUES.has(cle)),
+)
+```
 
 # 🌐 Mon Projet Vue.js & Vuetify
 
