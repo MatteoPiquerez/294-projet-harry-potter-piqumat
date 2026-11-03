@@ -200,7 +200,12 @@ export const useCharacterStore = defineStore('character', {
       this.saveFavorites()
     },
 
-    // TODO : a garder ou pas ? si oui -> documenter
+    /**
+     * Fonction qui va permettre de supprimer les favoris obsolete.
+     * Si un personnage n'existe plus dans l'api, mais qu'il se trouve encore
+     * dans les favoris, il ne pourra plus être affiché.
+     * Cette fonction va donc le supprimer des favoris.
+     */
     cleanupFavorites () {
       const initialCount = this.favorites.length
 

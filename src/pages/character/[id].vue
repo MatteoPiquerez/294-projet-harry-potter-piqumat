@@ -56,7 +56,8 @@
 </template>
 
 <script setup>
-  // Import du store Pokémon
+  import { computed } from 'vue'
+  // Import du store des personnages
   import { useCharacterStore } from '@/stores/characterStore'
   import { getImageUrl } from '@/utils/imageUrl'
 
@@ -75,13 +76,11 @@
   // créer un tableau avec toutes les propriétés de chaque personnage
   // (tous les personnages n'ont pas forcément les mêmes propriétés)
   // Les id, les images et les noms des personnages ne sont pas affichés
-  const cles = []
-  for (const cle in character.value) {
-    if (cle === 'id' || cle === 'image' || cle === 'name') {
-      continue
-    }
-    cles.push(cle)
-  }
+  const CLES_EXCLUES = new Set(['id', 'image', 'name'])
+  const cles = computed(() =>
+    Object.keys(character.value)
+      .filter(cle => !CLES_EXCLUES.has(cle)),
+  )
 
   // sépare les clés avec plusieurs mots collés (alternativeName par ex.) grâce à la majuscule de chaque mot
   // puis concate les mots du tableau en seule String avec un espace au milieu et transforme le tout en majuscule
