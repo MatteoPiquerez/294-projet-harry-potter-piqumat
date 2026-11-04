@@ -43,6 +43,33 @@ pour filtrer les recherches de manière pertinente.
 favoris soit directement initialisé à l'ouverture de la page dans le navigateur.
 
 ### Aperçu visuel
+
+#### Page d'accueil : 
+![page_accueil.jpg](src/assets/img/page_accueil.jpg)
+
+#### Onglet des sortilèges : 
+![onglet_sortilege.jpg](src/assets/img/onglet_sortilege.jpg)
+
+#### Fonction de recherche et de tri : 
+![fonction_tri_recherche.jpg](src/assets/img/fonction_tri_recherche.jpg)
+
+#### Aucun résultat : 
+![aucun_resultat_recherche.jpg](src/assets/img/aucun_resultat_recherche.jpg)
+
+#### Vue en détail d'un personnage : 
+![vue_details.jpg](src/assets/img/vue_details.jpg)
+
+#### Page des favoris :
+![page_favoris.jpg](src/assets/img/page_favoris.jpg)
+
+#### Aucun favoris :
+![aucun_favori.jpg](src/assets/img/aucun_favori.jpg)
+
+#### Page d'information : 
+![page_information.jpg](src/assets/img/page_information.jpg)
+
+
+
 // TODO : à faire 
 _(Capture d’écran de l’application)_  
 `![Screenshot de l’application](img/screenshot.png)`

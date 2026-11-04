@@ -1,14 +1,13 @@
 Questions à poser au prof : 
 - pourquoi quand je retire les personnages des favoris depuis la page favoris i l n'y a pas la snackbar. Le prof cherche
 - est-ce que je peux mettre les avancés par jour ou je dois mettre par semaine (j'ai mis un peu la même chose que dans mes commits)
+- est-ce que les images pour le readme sont à la bonne place ?
 
 
 
-
-- à quelle point la doc doit être devoloper (ex Environnement de développement)
-- Je doit mettre quoi dans la section méthodologie, et Test technique ?
 
 à faire semaine pro :
+- pourquoi il ne charge pas l'icon sur firefox ? 
 - retrouver de ou viens l'image de l'icon (google image)
 - passer default_user dans assets 
 - aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
