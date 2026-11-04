@@ -1,6 +1,10 @@
 Questions à poser au prof : 
-- pourquoi quand je retire les personnages des favoris depuis la page favoris il n'y a pas la snackbar. Le prof cherche
-- est-ce que il doit forcément y avoir des emits qqelque par : Non 
+- pourquoi quand je retire les personnages des favoris depuis la page favoris i l n'y a pas la snackbar. Le prof cherche
+- est-ce que je peux mettre les avancés par jour ou je dois mettre par semaine (j'ai mis un peu la même chose que dans mes commits)
+
+
+
+
 - à quelle point la doc doit être devoloper (ex Environnement de développement)
 - Je doit mettre quoi dans la section méthodologie, et Test technique ?
 
