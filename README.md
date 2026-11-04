@@ -4,7 +4,7 @@
 
 ### Concept
 J'ai choisi une API Harry Potter car je suis un grand fan de cette saga. 
-Le public cible peut être soit des dévelopeur junior qui pourrait utiliser ce projet comme exemple, comme exercice 
+Le public cible peut être soit des dévelopeurs juniors qui pourrait utiliser ce projet comme exemple, comme exercice 
 ou comme template pour d'autre projet.
 Ou alors des fans d'Harry Potter pourrait simplement l'utiliser pour se documenter sur les personnages et/ou les 
 sortilèges de la saga. 
@@ -136,7 +136,7 @@ ajouter leurs espèces à la liste (si elle n'y est pas encore)
 - ajouter rewrite SPA pour Vercel pour rediriger chaque rechargement de page sur index.html 
 - Correction mineur et amélioration de plusieurs fonctions avec claude
 - suite de la documentation
-- 
+
 ---
 
 ## 3. Outils et méthodologie
@@ -175,7 +175,7 @@ on peut augmenter cette limite à 100 grâce à _?limit=100_ à la fin de l'url
 on peut donc récupérer plusieurs fois 100 objets (autant de fois qu'il y a de page).
 - La pagination n'est pas utilisé dans mon application. 
 J'estimais avoir assez de donnée avec cent objets pour chaque endpoint
-- Il n'y a pas contre pas de quota (par heure par ex).
+- Il n'y a par contre pas de quota (par heure par ex).
 
 ### Architecture (Descriptif + schéma simple + data-flow)
 // TODO 
@@ -190,37 +190,51 @@ Outils utiles : Figma / Draw.io / ...
 ---
 
 ## 4. Tests et validation
-// TODO 
 
 ### Tests techniques
-- Le store fonctionne, les données sont récupérer correctement grâce à l'API 
+- Le store fonctionne, les données sont récupérées correctement grâce à l'API 
 - La mise en favoris fonctionne, le personnage est ajouté au localStorage et dans la liste des Favoris du store.
 - On peut recharger une page lorsqu'on est sur une route Vue. Le chemin est directement recalculé.
 - Lorsqu'un filtre est ajouté/retiré des recherches, les données sont directement recalculé grâce au Computed.
 - L'affichage de la vue détaillé d'un personnage grâce à son ID fonctionne.
 - Le routage entre chaque page fonctionne. 
 - L'avatar par défaut s'affiche correctement si le personnage ne possède pas d'image
-
-// TODO : chercher sur DEVJs quelques trucs à ajouter (pas besoin de bcp plus)
+- La vue détaillée d'un personnage affiche tous les attributs que possède le personnage
+- L'ajout et la suppression d'un favori affiche bien une snackbar avec un message.
+- On traite les 3 états de l'appel API 
+- On affiche un message clair si aucun résultat n'est trouvé suite à une recherche
+- Chaque personnage et sortilège est correctement passé en props aux _Card_
 
 ### Tests d’UX
-- Navigation intuitive  
-- Recherche/filtre/tri faciles à comprendre  
-- Feedback utilisateur (loading, erreurs, vide)  
-- ...
+- Un skeleton-loader s'affiche pendant que le store récupère les données 
+- Une snackbar s'affiche avec un message pour informer que le personnage a été ajouté ou supprimé des favoris.
+- Il y a un feedback utilisateur en cas de liste vide ou en cas de problème de chargement des données.
+- A chaque que la souris se transforme en main, c'est qu'il y a un clique à effectuer.
+- Chaque champ de recherche, de filtre ou de tri décrit bien ce qu'il fait et dans quel état il est.
+- La page actuelle est clairement visible grâce au rond clair entourant l'icône de la page.
+- Le logo du site est cliquable et ramène à la page d'acceuil 
+- Il y a une animation et un changement de couleur du coeur à l'ajout ou au retrait d'un favori.
+- La navigation est intuitive et respecte les standard du web.
 
 ### Tests d’accessibilité
-- Contraste couleurs (Vuetify par défaut)  
-- Labels et placeholders corrects  
-- Navigation clavier possible  
-- Focus visible  
-- ...
+- Contraste de couleur : tous est respecté, les couleurs majoritaires sont le noir et le blanc (très bon contraste)
+Les composants Vuetify ont par défaut un très bon contraste.
+- La navigation grâce à la tabulation fonctionne parfaitement, les focus se font sur chaque élément 
+- Toutes les images ont des textes alternatifs décrivant l'image
+- Tout est structuré dans des balises sémantiques pour faciliter la compréhension par les lecteurs d'écran.
+- Chaque champ de recherche possède un placeholder et un label clair et explicite 
+- Le site est responsive, rétrécissement des éléments pour une page plus petite, changement du nombre de colonnes
+si la taille de l'écran change.
+- Toute la navigation au clavier est fonctionnelle.
+- Chaque balise est choisi pour avoir la meilleure affordance possible.
 
 ### Tests d’erreurs & fallback
-- API down → **mock fallback** affiché (fichier local ou données simulées)  
-- Liste vide → message clair affiché  
-- Recherche sans résultat → affichage “Aucun élément trouvé”  
-- ...
+- API down : affichage d'un message d'erreur demandant à l'utilisateur de vérifier que l'URL de l'api est bien joignable.
+- Liste vide : S'il n'y a aucun favoris par exemple, un message va le signaler à l'utilisateur
+et l'inviter à ajouter un personnage en favori  
+- Recherche sans résultat : Un message informe qu'aucun résultat ne correspond à la recherche (avec un clin d'oeil à la saga)
+- Si un personnage ne possède pas d'image : grâce à la fonction `getImageUrl()` 
+on va lui assigner une image d'avatar par défaut
 
 ---
 
@@ -233,7 +247,7 @@ Outils utiles : Figma / Draw.io / ...
 - **Version** : 2.20261020.70.0
 - **Contexte** : Aide ponctuelle pour intégrer les outils de debuging Vue JS 
 
-`package.json` : ajoute de VueDevTools
+`package.json` : ajout de VueDevTools
 ```js
     "vite-plugin-vue-devtools": "^8.2.1",
 ```
@@ -515,5 +529,6 @@ je pense que c'est un plus de maitriser ça.
 ## 7. Références & Sources
 - Documentation de l’API : [API Harry Potter](https://apis.divtec.me/api/harrypotter/docs)  
 - Tutos clés utilisés : Voir les ressources de documentation (section _Documentation & tutos_) 
-- Usage de l’IA : voir section ci-dessus  
+- Usage de l’IA : voir section ci-dessus 
+// TODO : est-ce que je garde ça ? 
 - Autres ressources utiles : ...

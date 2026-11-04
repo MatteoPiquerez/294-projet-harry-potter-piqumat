@@ -9,6 +9,7 @@ Questions à poser au prof :
 - Je doit mettre quoi dans la section méthodologie, et Test technique ?
 
 à faire semaine pro :
+- retrouver de ou viens l'image de l'icon (google image)
 - passer default_user dans assets 
 - aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
 - demander à claude code les améliorations que je peux faire (checker s'il y a encore des pokémon)
@@ -31,17 +32,6 @@ site visité :
 
 gimp pour modifier les images (aller rechercher les images )
 
-pour les polices : https://gwfh.mranftl.com/fonts
-pour séparer les key de mes character (alternativeName par exemple ) : https://stackoverflow.com/questions/7888238/javascript-split-string-on-uppercase-characters
-trouver les icons mdi : https://pictogrammers.com/library/mdi/
-tester si une valeur est un tableau : https://stackoverflow.com/questions/767486/how-do-i-check-if-a-variable-is-an-array-in-javascript
-menu de navigation entre personnages et sortilège : https://vuetifyjs.com/en/components/tabs/#usage
-pour tous les composant vue et leur documentation : https://v2.vuetifyjs.com
-
-
-
-
-
 ia 
 Claude Code v2.1.246
 Opus 5 
@@ -55,92 +45,6 @@ export function getImageUrl (filename, fallback = '/default_user_image.png') {
     }
     return `${import.meta.env.VITE_API_URL}/${filename}`
 }
-```
-
-à modifier la carte des sortilèges pour lui ajouter des classes car il y avait des débordement 
-de texte et les card sortant du cardre 
-code exact généré : 
-```vue
-  <v-card class="h-100" hover>
-    <v-card-title class="text-wrap">{{ spell.name }}</v-card-title>
-    <v-card-text>Description : {{ spell.description }}</v-card-text>
-  </v-card>
-```
-
-
-
-CLaude free 
-Sonnet 5.5
-Mon code : 
-```js
-  function getValeurAafficher (valeur) {
-    if (valeur === null || valeur === undefined) return ''
-    if (Array.isArray(valeur)) {
-        let list = ''
-        for (let i = 0; i < valeur.length; i++) {
-            if (i !== 0) {
-                list += ', '
-            }
-            // chaque élément de la liste est entouré de guillemet (volontaire).
-            list += `"${valeur[i]}"`
-        }
-        return list
-    }
-    return valeur
-}
-```
-Amélioration de claude : 
-```js
-function getValeurAafficher(valeur) {
-  if (valeur === null || valeur === undefined) return ''
-  if (Array.isArray(valeur)) {
-    // chaque élément de la liste est entouré de guillemets (volontaire).
-    return valeur.map(v => `"${v}"`).join(', ')
-  }
-  return valeur
-}
-```
-
-mon code : 
-```js
-    initSpecies () {
-    for (const character of this.characters) {
-        const species = character.species
-        if (!this.species.includes(species)) {
-            this.species.push(species)
-        }
-    }
-}
-```
-
-amélioration de claude : 
-```js
-    /**
- * Liste toutes les espèces (sans doublon) des personnages.
- */
-initSpecies () {
-    this.species = [...new Set(this.characters.map(c => c.species))]
-},
-```
-
-Mon code : 
-```js
-const cles = []
-for (const cle in character.value) {
-    if (cle === 'id' || cle === 'image' || cle === 'name') {
-        continue
-    }
-    cles.push(cle)
-}
-```
-
-Correction de claude : 
-```js
-const CLES_EXCLUES = new Set(['id', 'image', 'name'])
-const cles = computed(() =>
-    Object.keys(character.value)
-        .filter(cle => !CLES_EXCLUES.has(cle)),
-)
 ```
 
 # 🌐 Mon Projet Vue.js & Vuetify
