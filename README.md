@@ -13,7 +13,6 @@ facilement, pour que des fonctionnalitées puissent être rajouté.
 L'objectif fonctionnel est que l'application soit une mini-encyclopédie très intuitive pour que n'importe qui puissez
 trouver des informations très simplement. 
 
-
 ### Fonctionnalités principales
 - Affichage d’une liste de plein de personnage de la saga Harry Potter (via API)
 - Affichage d'une liste de sortilège de la saga (via API également)
@@ -67,12 +66,6 @@ favoris soit directement initialisé à l'ouverture de la page dans le navigateu
 
 #### Page d'information : 
 ![page_information.jpg](src/assets/img/page_information.jpg)
-
-
-
-// TODO : à faire 
-_(Capture d’écran de l’application)_  
-`![Screenshot de l’application](img/screenshot.png)`
 
 ---
 
@@ -181,13 +174,20 @@ ajouter leurs espèces à la liste (si elle n'y est pas encore)
 - Lancer : `npm run dev` (Les variables d'environnement doivent être définit pour que le projet puisse être lancé)
 
 ### Méthodologie
-// TODO : poser la question 
-- Découpage en composants réutilisables 
-- Props & Emits clairs
-- Store global avec Pinia
-- Commits réguliers et explicites
-- Tests manuels (UI, persistance, erreurs API)
-- ...
+- Découpage de toute l'application en composant 
+- Sortilèges et personnages passé en props 
+- Store Pinia pour gérer l'état global de l'application et faire les appels API
+- beaucoup de commit pour détailler chaque étape de l'avancement.
+- À chaque nouvelle fonctionnalité des tests sont effectué pour vérifier si elle fonctionne comme prévu
+- Suivre chaque étape du Pokédex Vuetify, et à chaque étape intégrer les nouvels notions à mon projet 
+- M'assurer que je comprends toujours le code que j'ajoute à mon application 
+- Privilégier la qualité à la quantité
+- Avoir un README clair et structuré 
+- Aller chercher des documentations plutôt que de demander à l'IA 
+- Noter chaque source d'information ou de données
+- Être transparent sur les logiciels utilisés
+- Garder une arborescence de fichier et de dossier claire.
+- Privilégier un rythme de travail régulier plutôt que de tous faire au dernier moment.
 
 ### Choix techniques
 - API sélectionnée : https://apis.divtec.me
@@ -231,6 +231,7 @@ Outils utiles : Figma / Draw.io / ...
 - On traite les 3 états de l'appel API 
 - On affiche un message clair si aucun résultat n'est trouvé suite à une recherche
 - Chaque personnage et sortilège est correctement passé en props aux _Card_
+- La page est bien déployé sur Vercell
 
 ### Tests d’UX
 - Un skeleton-loader s'affiche pendant que le store récupère les données 
