@@ -5,10 +5,11 @@
  * Ou alors retourne l'image par défaut (fallback) si filename est vide.
  */
 import defaultUserImage from '@/assets/default_user_image.png'
+import { API_BASE_URL } from '@/plugins/axios.js'
 
 export function getImageUrl (filename, fallback = defaultUserImage) {
   if (!filename) {
     return fallback
   }
-  return `${import.meta.env.VITE_API_URL}/${filename}`
+  return `${API_BASE_URL}/${filename}`
 }

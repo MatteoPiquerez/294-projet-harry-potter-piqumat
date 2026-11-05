@@ -86,7 +86,7 @@
       variant="tonal"
     >
       Impossible de charger les Personnage. Vérifiez que l'API tourne sur
-      {{ apiUrl }}.
+      {{ API_BASE_URL }}.
     </v-alert>
 
     <!-- Message d'erreur si aucun Personnage ne correspond à la recherche -->
@@ -120,10 +120,8 @@
   // Import du store et de storeToRefs
   import { storeToRefs } from 'pinia'
   import CharacterCard from '@/components/CharacterCard.vue'
+  import { API_BASE_URL } from '@/plugins/axios.js'
   import { useCharacterStore } from '@/stores/characterStore.js'
-
-  // URL de l'API pour le message d'erreur
-  const apiUrl = import.meta.env.VITE_API_URL || 'https://apis.divtec.me'
 
   // Instancier le store
   const characterStore = useCharacterStore()
@@ -151,7 +149,7 @@
   const filteredBySpecies = computed(() => {
     if (!selectedSpecies.value) return characters.value
     return characters.value.filter(character =>
-      character.species.includes(selectedSpecies.value),
+      character.species === selectedSpecies.value,
     )
   })
 
