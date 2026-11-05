@@ -14,8 +14,10 @@
         * @click redirige vers la page d'accueil
       -->
       <v-avatar
+        aria-label="Logo de Poudlard"
         class="mr-4 pa-0 cursor-pointer"
         image="@/assets/hogwarts_logo.png"
+        role="img"
         size="64"
         @click="$router.push('/')"
       />
