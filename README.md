@@ -32,10 +32,9 @@ pour filtrer les données de manière pertinente.
   - Maison 
   - Année de naissance 
   - ...
-- Snackbar globale qui peut être appelée depuis n'importe où dans le code pour afficher un message 
-
 > À noter que tous les personnages ne possèdent pas tous les mêmes informations
 
+- Snackbar globale qui peut être appelée depuis n'importe où dans le code pour afficher un message
 - Les sortilèges n'ont pas de vue détaillée, car il y a trop peu d'informations à présenter
 - Fonctionnalité interactive des favoris : On peut ajouter des personnages à une liste de favoris pour les retrouver plus tard
 - Persistance locale des favoris. Les favoris vont être stockés dans le localStorage du navigateur pour que la liste des
@@ -699,7 +698,7 @@ Quand je faisais `character.image` dans mon composant, l'image n'était pas trou
 J'ai trouvé la solution dans l'exemple du Pokédex Vuetify
 
 Code de base : 
-```vue
+```js
 defineProps({
     character: {
         type: Object,
@@ -708,7 +707,7 @@ defineProps({
 })
 ```
 Correction : 
-```vue
+```js
 const { character } = defineProps({
     character: {
         type: Object,
@@ -722,6 +721,7 @@ const { character } = defineProps({
 - Les explications en cours m'ont permis de résoudre le problème de `response.data.data`
 - M. Tirole m'a aidé à résoudre le problème du getter du store, et le problème de l'URL de base invalide
 - Je me suis aidé du Pokédex pour résoudre le problème de la constante _Character_ passée en props
+- M. Tirole m'a également fournit le code et les explications pour l'implémentation de la snackbar globale
 
 ### Réussites et fiertés
 L'aspect du projet dont je suis assez fier, c'est la propreté. 
@@ -749,7 +749,7 @@ utiliser à bon escient pour attaquer l'ennemi ou parer ses sortilèges.
 - Battle des maisons : On choisit un personnage d'une maison et ensuite, il y a des questions et si on répond juste cela 
 nous permet de gagner des points. 
 
-Compétences que j'aimerais approfondir : 
+**Compétences que j'aimerais approfondir :** 
 - En apprendre plus sur les composants Vuetify : La library est gigantesque et j'ai le sentiment de ne pas toujours 
 avoir utilisé le composant le mieux adapté à ce que je voulais faire. Étant donné que les composants sont déjà stylisés, 
 cela permet de gagner un temps immense. Donc une bonne connaissance des composants est un vrai plus, je pense.
