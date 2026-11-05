@@ -9,9 +9,18 @@
       Retour
     </v-btn>
 
+    <!-- affiche un skeleton au rechargement de la page   -->
+    <v-skeleton-loader
+      v-if="characterStore.isLoading"
+      class="mx-auto"
+      height="550"
+      max-width="800"
+      type="image, article"
+    />
+
     <!-- affiche un message d'erreur si le personnage n'est pas trouvé -->
     <v-alert
-      v-if="!character"
+      v-else-if="!character"
       type="error"
       variant="tonal"
     >
