@@ -6,7 +6,6 @@
  */
 import defaultUserImage from '@/assets/default_user_image.png'
 import { API_BASE_URL } from '@/plugins/axios.js'
-
 export function getImageUrl (filename, fallback = defaultUserImage) {
   if (!filename) {
     return fallback

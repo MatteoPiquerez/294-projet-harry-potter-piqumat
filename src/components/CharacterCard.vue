@@ -27,20 +27,12 @@
         @click.stop.prevent="handleToggleFavorite()"
       />
     </v-card-actions>
-
-    <!-- La snackbar d'information pour nous avertir de l'ajout au du retrait des favoris -->
-    <v-snackbar
-      v-model="showSnackbar"
-      color="primary"
-      :timeout="2000"
-    >
-      {{ snackbarMessage }}
-    </v-snackbar>
   </v-card>
 </template>
 
 <script setup>
   import { useCharacterStore } from '@/stores/characterStore.js'
+  import { useSnackbarStore } from '@/stores/snackbarStore'
   import { getImageUrl } from '@/utils/imageUrl'
 
   const { character } = defineProps({
@@ -50,9 +42,8 @@
     },
   })
 
+  const snackbarStore = useSnackbarStore()
   const characterStore = useCharacterStore()
-  const showSnackbar = ref(false)
-  const snackbarMessage = ref('')
 
   /**
    * Fonction qui va ajouter le personnage des favoris s'il n'y était pas
@@ -63,8 +54,7 @@
   function handleToggleFavorite () {
     const wasFavorite = characterStore.isFavorite(character)
     characterStore.toggleFavorite(character)
-    snackbarMessage.value = wasFavorite ? 'Retiré des favoris' : 'Ajouté aux favoris'
-    showSnackbar.value = true
+    snackbarStore.notify(wasFavorite ? 'Retiré des favoris' : 'Ajouté aux favoris')
   }
 </script>
 
