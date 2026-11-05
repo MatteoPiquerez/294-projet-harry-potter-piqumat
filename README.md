@@ -85,7 +85,8 @@ favoris soit directement initialisé à l'ouverture de la page dans le navigateu
 - [Pinia Docs](https://pinia.vuejs.org/)
 
 **Autre Ressource :**
-- Gimp : pour la retouche de l'icon du menu principal (logo de poudlard)
+- [Logo de Poudlard](https://fr.wikipedia.org/wiki/Fichier:Hogwarts-Crest.png) 
+- Gimp : pour la retouche de l'icon du menu principal (logo de Poudlard)
 - [Générateur de favicon à partir d'une image](https://favicon.io/)
 
 #### Progression
@@ -211,11 +212,73 @@ Pour cela il suffisait de se connecter avec son compte github et ensuite de sél
 automatiquemenet du build et du depoiement 
 
 ### Architecture (Descriptif + schéma simple + data-flow)
-// TODO 
-- `App.vue` : layout principal  
-- `views/` : pages (liste, détail, favoris)  
-- ...
-Outils utiles : Figma / Draw.io / ...
+
+#### Descriptif
+HarryPotterDex est une **SPA** (Single Page Application) développée avec **Vue 3** et **Vuetify 3**, et construite avec **Vite**. Le projet est organisé en 3 couches :
+
+- **Les pages** (`src/pages/`) : chaque fichier correspond à une route. Le routage est **généré automatiquement** à partir des noms de fichiers grâce à `unplugin-vue-router`. Par exemple, `favoris.vue` devient `/favoris` et `character/[id].vue` devient `/character/:id`.
+- **Les composants** (`src/components/`) : ils s'occupent de l'affichage. Les *Containers* gèrent la recherche, le filtre et le tri, les *Cards* affichent un seul élément.
+- **Le store Pinia** (`src/stores/characterStore.js`) : il centralise toutes les données (personnages, sortilèges, espèces, favoris, état de chargement). C'est le seul endroit qui communique avec l'API (via Axios) et avec le `localStorage`.
+
+```
+src/
+├── App.vue                  → layout principal (header, router-view, footer) + lance init() du store
+├── main.js                  → crée l'application et enregistre les plugins
+├── pages/                   → une page = une route
+│   ├── index.vue            → /              : onglets Personnages / Sortilèges
+│   ├── character/[id].vue   → /character/:id : détail d'un personnage
+│   ├── favoris.vue          → /favoris       : personnages favoris
+│   ├── a-propos.vue         → /a-propos      : informations sur le projet
+│   └── [...path].vue        → toute autre URL : page 404
+├── components/
+│   ├── AppHeader.vue        → barre de navigation
+│   ├── AppFooter.vue        → pied de page
+│   ├── CharacterContainer.vue → recherche, filtre par espèce, tri + grille de personnages
+│   ├── CharacterCard.vue    → carte d'un personnage + bouton favori
+│   ├── SpellsContainer.vue  → recherche + grille de sortilèges
+│   └── SpellCard.vue        → carte d'un sortilège
+├── stores/
+│   └── characterStore.js    → state global, getters et appels API
+├── plugins/
+│   ├── axios.js             → instance Axios + API_BASE_URL
+│   ├── vuetify.js           → configuration de Vuetify (thème)
+│   └── index.js             → enregistre Vuetify, le router et Pinia
+├── router/index.js          → création du router à partir des pages
+├── layouts/default.vue      → layout appliqué automatiquement à chaque page
+├── utils/imageUrl.js        → construit l'URL d'une image ou renvoie l'avatar par défaut
+├── styles/settings.scss     → animation du cœur (heartbeat)
+└── assets/                  → logo, image par défaut, police, favicons
+public/                      → favicon.ico, site.webmanifest, icônes Android (copiés tels quels)
+```
+
+#### Schéma
+```mermaid
+flowchart TD
+    App["App.vue"] --> Header["AppHeader"]
+    App --> Router["router-view"]
+    App --> Footer["AppFooter"]
+
+    Router --> Index["index.vue (/)"]
+    Router --> Detail["character/[id].vue"]
+    Router --> Fav["favoris.vue"]
+    Router --> About["a-propos.vue"]
+    Router --> NotFound["[...path].vue (404)"]
+
+    Index --> CC["CharacterContainer"] --> Card["CharacterCard"]
+    Index --> SC["SpellsContainer"] --> Spell["SpellCard"]
+    Fav --> Card
+
+    Store[("characterStore (Pinia)")]
+    CC -.-> Store
+    SC -.-> Store
+    Detail -.-> Store
+    Fav -.-> Store
+    Card -.-> Store
+
+    Store --> Axios["plugins/axios.js"] --> API[("API apis.divtec.me")]
+    Store <--> LS[("localStorage (favoris)")]
+```
+*Les flèches pleines montrent quel composant contient quel autre. Les flèches en pointillés montrent quels composants lisent le store ou l'utilisent pour faire une action.*
 
 **Data-flow résumé :**  
 - Vue déclenche un **event utilisateur** → composant appelle une fonction du **store** → ...
@@ -286,7 +349,6 @@ on va lui assigner une image d'avatar par défaut
     "vite-plugin-vue-devtools": "^8.2.1",
 ```
 
-
 `vite.config.mjs` : ajout du plugin VueDevTools
 ```js
 // Utilities
@@ -313,11 +375,13 @@ export default defineConfig({
 
 **Fonction corrigé :** `getImageUrl()`
 La fonction qui étais censée retourner la bonne image pour chaque personnage, ou alors l'image par défaut
-si le personnage n'en possédait pas ne fonctionnait pas. 
+si le personnage n'en possédait pas, ne fonctionnait pas. 
 
 **Version de claude :**
 ```js
-export function getImageUrl (filename, fallback = '/default_user_image.png') {
+import defaultUserImage from '@/assets/default_user_image.png'
+
+export function getImageUrl (filename, fallback = defaultUserImage) {
     if (!filename) {
         return fallback
     }
@@ -414,6 +478,30 @@ const cles = computed(() =>
     Object.keys(character.value)
         .filter(cle => !CLES_EXCLUES.has(cle)),
 )
+```
+
+#### 
+- **Nom** : Claude Code
+- **Version** : Opus 5.5
+- **Contexte** : //TODO 
+
+##### Modification pour les icons dans index.html
+Les icons ne s'affichait pas sur certains navigateurs, car le chemin dans index.html était faux.
+L'IA m'a dit que site.webmanifest, favicon.ico et les deux images _android-chrome_ devaient se trouver dans _public_.
+
+**Code généré :** 
+```html 
+<link rel="icon" href="/favicon.ico">
+<link rel="apple-touch-icon" sizes="180x180" href="/src/assets/favicon/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/src/assets/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/src/assets/favicon/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+```
+
+L'IA m'a également ajouté ces 2 attributs dans le fichier _site.webmanifest_ : 
+```json
+"name": "HarryPotterDex",
+"short_name": "HPDex",
 ```
 
 ### Utilisation détaillée
@@ -564,6 +652,5 @@ je pense que c'est un plus de maitriser ça.
 ## 7. Références & Sources
 - Documentation de l’API : [API Harry Potter](https://apis.divtec.me/api/harrypotter/docs)  
 - Tutos clés utilisés : Voir les ressources de documentation (section _Documentation & tutos_) 
-- Usage de l’IA : voir section ci-dessus 
-// TODO : est-ce que je garde ça ? 
-- Autres ressources utiles : ...
+- Usage de l’IA : voir section ci-dessus
+- Autres ressources utiles : _Documentation & tutos > Autres ressources_
