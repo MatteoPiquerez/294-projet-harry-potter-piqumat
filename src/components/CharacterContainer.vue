@@ -17,6 +17,7 @@
           density="compact"
           hide-details
           label="Rechercher un personnage"
+          placeholder="Ex : Harry Potter"
           prepend-inner-icon="mdi-magnify"
           variant="outlined"
         />
@@ -35,6 +36,7 @@
           hide-details
           :items="characterStore.species"
           label="Espèce"
+          placeholder="Ex : owl"
           prepend-inner-icon="mdi-filter"
           variant="outlined"
         />

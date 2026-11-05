@@ -16,6 +16,7 @@
           density="compact"
           hide-details
           label="Rechercher un sortilège"
+          placeholder="Ex : Avada Kedavra"
           prepend-inner-icon="mdi-magnify"
           variant="outlined"
         />
