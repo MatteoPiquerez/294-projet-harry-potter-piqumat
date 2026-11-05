@@ -252,6 +252,12 @@ public/                      → favicon.ico, site.webmanifest, icônes Android 
 ```
 
 #### Schéma
+
+> **Note :** ce schéma est écrit en **Mermaid**, c'est-à-dire du texte transformé en diagramme. Il ne s'affiche pas forcément selon l'éditeur utilisé :
+> - **Sur GitHub**, il faut cliquer sur l'icône de la double flèche **↔** du bloc pour afficher le diagramme.
+> - **Dans WebStorm**, il faut installer le plugin **Mermaid** (Settings → Plugins → Marketplace).
+> - **Sinon**, on peut copier le code du bloc dans [mermaid.live](https://mermaid.live) pour voir le diagramme.
+
 ```mermaid
 flowchart TD
     App["App.vue"] --> Header["AppHeader"]
@@ -280,8 +286,55 @@ flowchart TD
 ```
 *Les flèches pleines montrent quel composant contient quel autre. Les flèches en pointillés montrent quels composants lisent le store ou l'utilisent pour faire une action.*
 
-**Data-flow résumé :**  
-- Vue déclenche un **event utilisateur** → composant appelle une fonction du **store** → ...
+
+#### Data-flow
+
+**Data-flow résumé :**
+- Un **événement** (démarrage de l'app, clic de l'utilisateur) → le composant appelle une **action du store** → le store modifie son **state** (et appelle l'API ou le `localStorage` si besoin) → les **getters** et les **computed** se recalculent → Vue **met à jour l'affichage** automatiquement.
+- Les données descendent toujours **du store vers les composants** (lecture du state, des getters, et des props pour les *Cards*). Les composants ne modifient jamais le state directement, ils passent toujours par une **action**.
+
+##### 1. Chargement des données (démarrage de l'application)
+1. Au montage de `App.vue`, `onMounted` appelle l'action `characterStore.init()`.
+2. `init()` passe `isLoading` à `true`. Les composants affichent alors des **skeleton-loaders**.
+3. `fetchCharacters()` et `fetchSpells()` sont lancés **en parallèle** (`Promise.all`). Chacun fait une requête `GET` à l'API via l'instance Axios (`plugins/axios.js`).
+4. Les réponses sont stockées dans le state (`characters` et `spells`). En cas d'erreur, la liste est vidée (`[]`).
+5. `loadFavorites()` récupère les ids des favoris dans le `localStorage`, puis `initSpecies()` construit la liste des espèces (sans doublon) pour le filtre.
+6. `isLoading` repasse à `false`. Les composants affichent les cartes, ou un message d'erreur si une liste est vide.
+
+##### 2. Recherche, filtre et tri
+1. L'utilisateur tape une recherche, choisit une espèce ou clique sur le bouton de tri. La valeur est stockée dans une `ref` **locale** au composant (`searchQuery`, `selectedSpecies`, `sortOrder`).
+2. Les **computed chaînés** se recalculent automatiquement : `characters` (store) → `filteredBySpecies` → `filteredBySearch` → `sortedCharacters`.
+3. Le `v-for` affiche une `CharacterCard` par personnage du résultat, en lui passant le personnage en **props**.
+
+Le store n'est **jamais modifié** ici : on filtre et on trie une copie des données, et la liste d'origine reste intacte.
+
+##### 3. Ajout / retrait d'un favori
+1. L'utilisateur clique sur le cœur d'une `CharacterCard`. Cela appelle `handleToggleFavorite()`.
+2. Le composant appelle l'action `toggleFavorite(character)`, qui ajoute ou retire l'id du personnage dans le state `favorites`.
+3. `saveFavorites()` enregistre immédiatement la liste dans le `localStorage`, pour qu'elle survive à un rechargement de la page.
+4. Les getters `isFavorite`, `getFavorites` et `totalFavorites` se recalculent. Le cœur change de couleur, la page Favoris et son compteur se mettent à jour.
+5. Une **snackbar** confirme l'action à l'utilisateur.
+
+##### 4. Affichage du détail d'un personnage
+1. L'utilisateur clique sur une carte. Le router navigue vers `/character/:id`.
+2. La page `character/[id].vue` lit l'id dans l'URL (`route.params.id`) et appelle le getter `getCharacterById(id)` dans un `computed`.
+3. Les propriétés du personnage sont parcourues (`Object.keys`) pour afficher toutes ses informations.
+4. Si la page est rechargée (F5), le store se recharge d'abord. Un skeleton s'affiche pendant `isLoading`, puis le personnage, ou un message « Personnage non trouvé » si l'id n'existe pas.
+
+##### Schéma du data-flow
+*(Même remarque que plus haut pour l'affichage du schéma Mermaid.)*
+
+```mermaid
+flowchart LR
+    U["Utilisateur"] -- "clic / saisie" --> C["Composant"]
+    C -- "appelle une action" --> S["characterStore (Pinia)"]
+    S -- "GET (Axios)" --> API[("API")]
+    API -- "données" --> S
+    S -- "save / load favoris" --> LS[("localStorage")]
+    LS -- "ids des favoris" --> S
+    S -- "state / getters" --> C
+    C -- "met à jour l'affichage" --> U
+```
 
 ---
 
@@ -503,6 +556,11 @@ L'IA m'a également ajouté ces 2 attributs dans le fichier _site.webmanifest_ :
 "name": "HarryPotterDex",
 "short_name": "HPDex",
 ```
+
+##### Réalisation de la section : _Architecture (Descriptif + schéma simple + data-flow)_
+Claude a entirement réaliser cette section. Je lui ai demander de le faire car les diagrammes de structure et de 
+data-flow m'aurait pris beaucoup de temps à faire à la main. 
+J'ai ensuite contrôlé ce qu'il avait fait pour vérifier que tous étais juste et valide.
 
 ### Utilisation détaillée
 J'ai très peu utilisé l'IA. C'était un choix personnel, étant donné que le projet doit être présenté et connu en détail,

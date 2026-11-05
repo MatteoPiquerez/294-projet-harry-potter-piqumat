@@ -1,51 +1,22 @@
 Questions à poser au prof : 
 - pourquoi quand je retire les personnages des favoris depuis la page favoris i l n'y a pas la snackbar. Le prof cherche
-- est-ce que je peux mettre les avancés par jour ou je dois mettre par semaine (j'ai mis un peu la même chose que dans mes commits)
 - est-ce que les images pour le readme sont à la bonne place ?
+- L'ia me dit que tous les favicons doivent dans public -> Vrai ? du coup modifier le html 
 
 
 
 
 à faire semaine pro :
-- pourquoi il ne charge pas l'icon sur firefox ? 
-- retrouver de ou viens l'image de l'icon (google image)
-- passer default_user dans assets 
-- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
-- demander à claude code les améliorations que je peux faire (checker s'il y a encore des pokémon)
 - rédiger la documentation de manière détaillée (je peux adapter la doc si besoin)
 
 - checker les todo
+- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
 
 Optionnel : 
 - essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
 - rendre le titre responsive 
 - essayer de mettre un autre composant que les v-card pour les sortilèges (vu que elle ne sont pas cliquable)
 - essayer de rajouter des animations css
-
-
-
-
- 
-
-
-site visité : 
-
-gimp pour modifier les images (aller rechercher les images )
-
-ia 
-Claude Code v2.1.246
-Opus 5 
-
-à corriger la fonction dans imageUrl.js pour que ça appelle l'image dans public/
-voilà le bout de code exact qu'il a fait 
-```js
-export function getImageUrl (filename, fallback = '/default_user_image.png') {
-    if (!filename) {
-        return fallback
-    }
-    return `${import.meta.env.VITE_API_URL}/${filename}`
-}
-```
 
 # 🌐 Mon Projet Vue.js & Vuetify
 
