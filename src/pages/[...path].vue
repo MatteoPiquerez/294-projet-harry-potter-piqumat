@@ -23,10 +23,10 @@
     <!--
     Bouton pour retourner à la page d'accueil
       * color="primary" applique la couleur principale pour le bouton
-      * large rend le bouton plus visible et centré
-      * @click="$router.push('/')" redirige vers la page d'accueil
+      * size="large" rend le bouton plus visible et centré
+      * to="/" redirige vers la page d'accueil
     -->
-    <v-btn color="primary" large to="/">
+    <v-btn color="primary" size="large" to="/">
       Retour à l'accueil
     </v-btn>
   </v-container>

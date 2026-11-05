@@ -27,7 +27,7 @@ export const useCharacterStore = defineStore('character', {
      * @returns {number}
      */
     totalSpells: state => {
-      return state.characters.length
+      return state.spells.length
     },
 
     /**

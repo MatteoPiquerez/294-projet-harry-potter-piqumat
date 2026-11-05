@@ -26,7 +26,6 @@
       Filtre par espèce
         * v-select affiche un menu déroulant avec les espèces disponibles
         * :items utilise la liste des espèces contenue dans le store
-        * item-title et item-value définissent quelles propriétés afficher/utiliser
       -->
       <v-col cols="12" md="4" sm="6">
         <v-select
@@ -34,8 +33,6 @@
           clearable
           density="compact"
           hide-details
-          item-title="name"
-          item-value="id"
           :items="characterStore.species"
           label="Espèce"
           prepend-inner-icon="mdi-filter"
