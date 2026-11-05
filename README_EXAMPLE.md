@@ -1,22 +1,25 @@
-Questions à poser au prof : 
-- pourquoi quand je retire les personnages des favoris depuis la page favoris i l n'y a pas la snackbar. Le prof cherche
+Questions à poser au prof :
 - est-ce que les images pour le readme sont à la bonne place ?
-- L'ia me dit que tous les favicons doivent dans public -> Vrai ? du coup modifier le html 
+- L'ia me dit que tous les favicons doivent dans public -> Vrai ? 
 
 
 
 
 à faire semaine pro :
-- rédiger la documentation de manière détaillée (je peux adapter la doc si besoin)
-
+- rédiger la documentation de manière détaillée
 - checker les todo
-- aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
+
+avant de rendre projet : 
+- compléter usage IA 
+- compléter étape d'avancement avec les derniers commits 
+- merge (s'il y a une nouvel branche)
+- supprimer README_EXAMPLE
 
 Optionnel : 
 - essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
-- rendre le titre responsive 
-- essayer de mettre un autre composant que les v-card pour les sortilèges (vu que elle ne sont pas cliquable)
+- rendre le titre responsive
 - essayer de rajouter des animations css
+
 
 # 🌐 Mon Projet Vue.js & Vuetify
 
