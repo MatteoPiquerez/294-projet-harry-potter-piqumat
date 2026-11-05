@@ -174,6 +174,11 @@ ajouter leurs espèces à la liste (si elle n'y est pas encore)
 - Ajout de texte alternatif pour les icônes 
 - Grosse relecture du code et corrections mineures
 - Ajout de la snackbar dans App.vue pour pouvoir l'utiliser partout dans l'application 
+- Ajout du thème dark au lieu de système
+- Ajout d'un aria-label sur le v-avatar
+- Ajout des placeholders pour chaque champ de recherche.
+- Finition de la documentation
+- Finition de la V1 : Commit final
 
 ---
 
@@ -563,7 +568,7 @@ const cles = computed(() =>
 - **Nom** : Claude Code
 - **Version** : Opus 5.5
 - **Explication** : Il y a deux sections Claude Code, car j'ai utilisé deux modèles différents.
-- **Contexte** : //TODO
+- **Contexte** : Correction de bouts de code, aide pour la documentation.
 
 ##### Modification pour les icônes dans index.html
 Les icônes ne s'affichaient pas sur certains navigateurs, car le chemin dans index.html était faux.
@@ -597,12 +602,15 @@ Il a également relevé des améliorations mineures :
 - Texte alternatif manquant
 - État de chargement manquant pour la page de détail des personnages
 - Couleur du site _dark_ au lieu de _system_
-- aria-label sur le v-avatar
+- Aria-label sur le v-avatar
 - Placeholder manquant pour les champs de recherche.
+
 Les améliorations mineures ont été relevées par Claude, mais corrigées par moi.
 
 ##### Correction d'orthographe et cohérence de la documentation
-// TODO : à faire 
+Claude a relu toute la documentation et a corrigé toutes les fautes d'orthographe.
+Il a corrigé les majuscules et certaines tournures, et m’a signalé les autres pour que je les corrige.
+Il a aussi contrôlé la correspondance de ma documentation par rapport à mon projet.
 
 ### Utilisation détaillée
 J'ai très peu utilisé l'IA. C'était un choix personnel, étant donné que le projet doit être présenté et connu en détail,

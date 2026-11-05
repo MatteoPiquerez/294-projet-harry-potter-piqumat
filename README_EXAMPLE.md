@@ -2,9 +2,6 @@ Questions à poser au prof :
 - est-ce que les images pour le readme sont à la bonne place ?
 - L'ia me dit que tous les favicons doivent dans public -> Vrai ? 
 
-
-
-
 à faire semaine pro :
 - rédiger la documentation de manière détaillée
 - checker les todo
@@ -19,6 +16,7 @@ Optionnel :
 - essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
 - rendre le titre responsive
 - essayer de rajouter des animations css
+- faire que si le personnage à une carte mais que elle n'est pas accesible, on mette la carte par défaut
 
 
 # 🌐 Mon Projet Vue.js & Vuetify
