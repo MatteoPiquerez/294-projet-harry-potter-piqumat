@@ -13,13 +13,14 @@ Questions à poser au prof :
 - aller voir l'exemple de documentation que j'ai mis en favoris dans firefox
 - demander à claude code les améliorations que je peux faire (checker s'il y a encore des pokémon)
 - rédiger la documentation de manière détaillée (je peux adapter la doc si besoin)
-- essayer de mettre un autre composant que les v-card pour les sortilèges (vu que elle ne sont pas cliquable)
-- essayer de rajouter des animations css
+
 - checker les todo
 
 Optionnel : 
 - essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
 - rendre le titre responsive 
+- essayer de mettre un autre composant que les v-card pour les sortilèges (vu que elle ne sont pas cliquable)
+- essayer de rajouter des animations css
 
 
 

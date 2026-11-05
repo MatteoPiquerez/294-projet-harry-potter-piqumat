@@ -165,7 +165,7 @@ ajouter leurs espèces à la liste (si elle n'y est pas encore)
 - **IDE** : WebStorm 
 - **Versioning** : Git + GitHub
 - **Dépendances principales** : Vue 3, Vuetify 3, Pinia, Axios
-- **Gestion API Keys** : `.env` + `.env.example`
+- **Gestion des variables environment** : `.env` + `.env.example`
 
 ### Installation & Run
 - Cloner le repo : `git clone https://github.com/MatteoPiquerez/294-projet-harry-potter-piqumat.git`
@@ -203,6 +203,12 @@ on peut donc récupérer plusieurs fois 100 objets (autant de fois qu'il y a de 
 - La pagination n'est pas utilisé dans mon application. 
 J'estimais avoir assez de donnée avec cent objets pour chaque endpoint
 - Il n'y a par contre pas de quota (par heure par ex).
+
+### Deploiement 
+Pour un déploiment très simple l'application à été déployé sur Vercell.
+Pour cela il suffisait de se connecter avec son compte github et ensuite de sélectionner le repo
+à publier. Ensuite Vercell nous demandait d'ajouter les variables d'environnements, et s'occupait ensuite 
+automatiquemenet du build et du depoiement 
 
 ### Architecture (Descriptif + schéma simple + data-flow)
 // TODO 
@@ -512,6 +518,7 @@ const { character } = defineProps({
     },
 })
 ```
+
 #### Aide reçu et source 
 - Je me suis beaucoup appuyé sur le Pokédex Vuetify pour les corrections.
 - Les explications en cours m'ont permis de résoudre le problème de `response.data.data`
