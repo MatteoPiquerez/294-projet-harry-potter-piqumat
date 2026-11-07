@@ -12,8 +12,7 @@ avant de rendre projet :
 - supprimer README_EXAMPLE
 
 Optionnel : 
-- essayer de faire un bouton qui change la couleur du theme (vuetify.js)  
-- rendre le titre responsive
+- essayer de faire un bouton qui change la couleur du theme (vuetify.js)
 - essayer de rajouter des animations css
 - faire que si le personnage à une carte mais que elle n'est pas accesible, on mette la carte par défaut
 
