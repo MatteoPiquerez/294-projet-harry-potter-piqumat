@@ -179,6 +179,12 @@ ajouter leurs espèces à la liste (si elle n'y est pas encore)
 - Finition de la documentation
 - Finition de la V1 : Commit final
 
+##### 7 Novembre : 
+- Amélioration du responsive sur mobile avec Claude Code :
+  - Taille des titres et des onglets adaptée aux petits écrans
+  - Le nom des personnages passe à la ligne dans la vue détaillée au lieu de dépasser
+  - Le titre de la barre de navigation devient « HPDex » sur mobile
+
 ---
 
 ## 3. Outils et méthodologie
@@ -404,7 +410,8 @@ Les composants Vuetify ont par défaut un très bon contraste.
 - Tout est structuré dans des balises sémantiques pour faciliter la compréhension par les lecteurs d'écran.
 - Chaque champ de recherche possède un placeholder et un label clair et explicite 
 - Le site est responsive, rétrécissement des éléments pour une page plus petite, changement du nombre de colonnes
-si la taille de l'écran change.
+si la taille de l'écran change. Les titres, les onglets et le nom des personnages s'adaptent aussi aux petits écrans,
+et le titre de la barre de navigation est raccourci en « HPDex » sur mobile.
 - Toute la navigation au clavier est fonctionnelle.
 - Chaque balise est choisie pour avoir la meilleure affordance possible.
 
@@ -592,6 +599,31 @@ L'IA m'a également ajouté ces 2 attributs dans le fichier _site.webmanifest_ :
 Claude a entièrement réalisé cette section. Je lui ai demandé de le faire car les diagrammes de structure et de 
 data-flow m'auraient pris beaucoup de temps à faire à la main. 
 J'ai ensuite contrôlé ce qu'il avait fait pour vérifier que tout était juste et valide.
+
+##### Responsive sur mobile
+Certains éléments étaient trop grands sur mobile : les titres, les onglets, et le nom des personnages 
+qui dépassait de la carte dans la vue détaillée. 
+Claude m'a proposé d'utiliser les classes responsive de Vuetify plutôt que d'écrire du CSS. 
+Une classe sans préfixe (ex. `text-h5`) s'applique sur tous les écrans, et une classe avec `sm` 
+(ex. `text-sm-h3`) s'applique à partir de 600px de large.
+
+**Code généré :**
+```html
+<!-- Titre de la page d'accueil -->
+<h1 class="text-h5 text-sm-h3 text-center my-6">HarryPotterDex</h1>
+
+<!-- Onglets -->
+<v-tab class="text-caption text-sm-button" value="personnages">
+
+<!-- Nom du personnage : text-wrap autorise le retour à la ligne -->
+<v-card-title class="text-h5 text-sm-h4 text-wrap">
+
+<!-- Titre de la barre de navigation : nom raccourci sur mobile -->
+<v-toolbar-title>
+  <span class="d-none d-sm-inline">HarryPotterDex</span>
+  <span class="d-sm-none">HPDex</span>
+</v-toolbar-title>
+```
 
 ##### Review de Code générale 
 Claude a relu tout le code pour suggérer des améliorations. 
