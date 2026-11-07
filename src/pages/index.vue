@@ -2,15 +2,15 @@
 
   <!-- Page d'accueil du site -->
   <v-container>
-    <h1 class="text-h3 text-center my-6">HarryPotterDex</h1>
+    <h1 class="text-h5 text-sm-h3 text-center my-6">HarryPotterDex</h1>
 
     <!-- Affiche un menu de 2 onglets pour aller soit sur les sortilèges soit les personnages -->
     <v-tabs v-model="tab" grow>
-      <v-tab value="personnages">
+      <v-tab class="text-caption text-sm-button" value="personnages">
         <v-icon icon="mdi-account-outline" />
         &nbsp; Personnages
       </v-tab>
-      <v-tab value="sortileges">
+      <v-tab class="text-caption text-sm-button" value="sortileges">
         <v-icon icon="mdi-creation-outline" />
         &nbsp; Sortilèges
       </v-tab>

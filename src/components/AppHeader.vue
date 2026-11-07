@@ -23,7 +23,10 @@
       />
 
       <!-- Titre de l'application affiché dans la barre -->
-      <v-toolbar-title>HarryPotterDex</v-toolbar-title>
+      <v-toolbar-title>
+        <span class="d-none d-sm-inline">HarryPotterDex</span>
+        <span class="d-sm-none">HPDex</span>
+      </v-toolbar-title>
 
       <!--
       Liens de navigation générés dynamiquement

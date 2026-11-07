@@ -41,7 +41,7 @@
         width="1000"
       />
 
-      <v-card-title class="text-h4">
+      <v-card-title class="text-h5 text-sm-h4 text-wrap">
         {{ character.name }}
       </v-card-title>
 
