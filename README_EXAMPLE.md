@@ -1,5 +1,4 @@
 Questions à poser au prof :
-- est-ce que les images pour le readme sont à la bonne place ?
 - L'ia me dit que tous les favicons doivent dans public -> Vrai ? 
 
 à faire semaine pro :

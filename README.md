@@ -43,28 +43,28 @@ favoris soit directement initialisée à l'ouverture de la page dans le navigate
 ### Aperçu visuel
 
 #### Page d'accueil : 
-![page_accueil.jpg](src/assets/img/page_accueil.jpg)
+![page_accueil.jpg](docs/img/page_accueil.jpg)
 
 #### Onglet des sortilèges : 
-![onglet_sortilege.jpg](src/assets/img/onglet_sortilege.jpg)
+![onglet_sortilege.jpg](docs/img/onglet_sortilege.jpg)
 
 #### Fonction de recherche et de tri : 
-![fonction_tri_recherche.jpg](src/assets/img/fonction_tri_recherche.jpg)
+![fonction_tri_recherche.jpg](docs/img/fonction_tri_recherche.jpg)
 
 #### Aucun résultat : 
-![aucun_resultat_recherche.jpg](src/assets/img/aucun_resultat_recherche.jpg)
+![aucun_resultat_recherche.jpg](docs/img/aucun_resultat_recherche.jpg)
 
 #### Vue en détail d'un personnage : 
-![vue_details.jpg](src/assets/img/vue_details.jpg)
+![vue_details.jpg](docs/img/vue_details.jpg)
 
 #### Page des favoris :
-![page_favoris.jpg](src/assets/img/page_favoris.jpg)
+![page_favoris.jpg](docs/img/page_favoris.jpg)
 
 #### Aucun favori :
-![aucun_favori.jpg](src/assets/img/aucun_favori.jpg)
+![aucun_favori.jpg](docs/img/aucun_favori.jpg)
 
 #### Page d'information : 
-![page_information.jpg](src/assets/img/page_information.jpg)
+![page_information.jpg](docs/img/page_information.jpg)
 
 ---
 
